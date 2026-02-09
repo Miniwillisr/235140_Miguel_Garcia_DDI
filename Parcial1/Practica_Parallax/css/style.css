@@ -8,7 +8,7 @@
     height: 100vh;
     border: 2px solid black;
     display: grid;
-    gap: 5px;
+    gap: 3px;
     grid-template-areas: 
     "uno uno dos dos"
     "tres tres cuatro cuatro"
