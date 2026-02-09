@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    overflow: hidden;
+}
+
+body {
+    width: 100vw;
+    height: 200vh;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    background-color: peru;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.contenedor-1, .espacio {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+    /*background-image: url("../recursos/img/Paisaje1.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; mantiene la imagen fija. crea el efecto de cascada*/
+}
+
+.contenedor-1::before {
+    content: ""; /*Es mportante para que se pueda ver el contenedor*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("../recursos/img/Paisaje1.png");
+    background-size: cover;
+    transform: translateZ(-1px) scale(2.2);
+}
+.doro{
+    width: 40%;
+    left: 55%;
+    position: absolute;
+}
+.contenedor-1::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("../recursos/img/DoroGold.webp");
+    background-size: cover;
+    transform: translateX(45%);
+}
+.contenedor-1 .doro{
+    transform: translateZ(-.5px) scale(1.5,1.6) translate(-33%);
+}
+.espacio{
+    height: 200vh;
+    background-color: peru;
+}
