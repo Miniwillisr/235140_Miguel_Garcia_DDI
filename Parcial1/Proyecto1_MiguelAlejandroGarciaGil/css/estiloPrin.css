@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    min-height: 200vh; /* Altura extra para poder hacer scroll y ver el efecto */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #6c5ce7; /* Borde guía como en tu imagen */
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.img-placeholder {
+    width: 150px;
+    height: 50px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --- MAIN GRID --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% Texto | 50% Animación */
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid #333; /* Borde contenedor principal */
+    background: white;
+    margin-top: 20px;
+    min-height: 600px;
+}
+
+.text-content {
+    border: 1px solid #999;
+    padding: 20px;
+}
+
+/* --- AREA PARALLAX --- */
+.parallax-area {
+    position: relative; /* Necesario para mover elementos absolutos dentro */
+    border: 1px solid #999;
+    min-height: 500px;
+}
+
+.moving-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #a4c639; /* Verde Android */
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.moving-circle::after {
+    content: "X"; /* La X dentro del círculo */
+}
+
+.target-box {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #333;
+    position: absolute;
+    bottom: 20px;
+    right: 20px; /* Esquina inferior derecha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+/* --- FOOTER --- */
+footer {
+    border: 2px solid #6c5ce7;
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    background: #a4c639;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
