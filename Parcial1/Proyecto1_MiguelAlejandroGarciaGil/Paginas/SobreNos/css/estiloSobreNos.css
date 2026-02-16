@@ -1,0 +1,90 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-sobre {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #3b0b0b; 
+    color: white;
+}
+
+/* --- Grid --- */
+.contenedor-contenido {
+    display: flex;
+    gap: 40px; /* Espacio entre video y texto */
+    max-width: 1100px;
+    width: 100%;
+    background: #2c2c2c;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+}
+
+/* --- Columna Video --- */
+.columna-video {
+    flex: 1; /* Ocupa el 50% */
+}
+
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    position: relative;
+    height: 0;
+}
+
+.video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 5px;
+}
+
+/* --- Columna Texto --- */
+.columna-texto {
+    flex: 1; /* Ocupa el otro 50% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.columna-texto h1 {
+    color: #a4c639;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.columna-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+/* --- Estilo del Botón --- */
+.btn-estilo {
+    padding: 15px 30px;
+    background-color: transparent;
+    border: 2px solid #a4c639;
+    color: #a4c639;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    width: fit-content; /* El botón se ajusta a su texto */
+}
+
+.btn-estilo:hover {
+    background-color: #a4c639;
+    color: #1a1a1a; /* Texto oscuro al pasar el mouse */
+    box-shadow: 0 0 15px rgba(164, 198, 57, 0.5); /* Resplandor */
+}

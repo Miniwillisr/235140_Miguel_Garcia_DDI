@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 1</title>
+    <title>Proyecto 1 - Alan Wake</title>
     <link rel="stylesheet" href="css/estiloPrin.css">
 </head>
+
 <body>
     <header>
-        <div class="logo-area">
-            <div class="img-placeholder">LOGO</div>
+        <div class="Barra_Nav">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="recursos/img/AlanWake_Logo.png" alt="AlanWake Logo">
+            </div>
+            </a>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Principal</a></li>
-                <li><a href="#">Galería</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="index.html">Principal</a></li>
+                <li><a href="Paginas/Galeria/galeria.html">Galería</a></li>
+                <li><a href="Paginas/SobreNos/sobreNos.html">Sobre Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="grid-container">
-        
-        <section class="text-content">
-            <h1>Bienvenido</h1>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-            <br>
-            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+        <section class="texto-area">
+            <h1>Sinopsis</h1>
+            <p>Alan Wake 2 es un videojuego de terror psicológico y supervivencia (survival horror) centrado en una
+                narrativa dual. Narra la historia de Saga Anderson, una agente del FBI que investiga asesinatos rituales
+                en Bright Falls, y el escritor Alan Wake, quien intenta escapar del "Lugar Oscuro" reescribiendo la
+                realidad. Ambos mundos están entrelazados, combinando elementos cinematográficos, investigación
+                detectivesca y una atmósfera asfixiante. </p>
         </section>
 
         <section class="parallax-area">
-            <div class="moving-circle" id="circle"></div>
-            
-            <div class="target-box">Img Meta</div>
+            <div class="alanWake" id="alanWake">
+                <img src="recursos/img/AlanPersonaje.png" alt="Alan Wake Personaje">
+            </div>
+            <div class="scratch"><img src="recursos/img/Scratch.webp" alt="Scratch"></div>
         </section>
-
     </main>
 
     <footer>
-        <div class="footer-text">
+        <div class="footer-texto">
             <span>© 2026 Sitio Web</span>
         </div>
-        <div class="social-icons">
-            <div class="icon">FB</div>
-            <div class="icon">IG</div>
-            <div class="icon">X</div>
+        <div class="redes-sociales">
+            <a href="https://www.facebook.com" class="iconos" target="_blank"><img src="recursos/img/FB_Logo.webp"
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com" class="iconos" target="_blank"><img src="recursos/img/INS_Logo.png"
+                    alt="Instagram"></a>
+            <a href="https://twitter.com" class="iconos" target="_blank"><img src="recursos/img/Twitter_Logo.png"
+                    alt="X"></a>
         </div>
     </footer>
-
     <script src="Js/scriptPrin.js"></script>
-
 </body>
+
 </html>

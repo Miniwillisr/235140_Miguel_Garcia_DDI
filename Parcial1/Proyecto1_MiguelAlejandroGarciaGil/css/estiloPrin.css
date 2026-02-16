@@ -5,31 +5,28 @@
     font-family: sans-serif;
 }
 
-body {
-    background-color: #f4f4f4;
-    min-height: 200vh; /* Altura extra para poder hacer scroll y ver el efecto */
-}
-
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border: 2px solid #6c5ce7; /* Borde guía como en tu imagen */
-    background: white;
+    border: 2px solid #919191;
+    background: #3b0b0b;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.img-placeholder {
+header .Logo {
     width: 150px;
-    height: 50px;
-    background: #ccc;
+    background: #3b0b0b;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: 1px solid #333;
+}
+header .Logo img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 nav ul {
@@ -40,91 +37,105 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #919191;
     font-weight: bold;
     font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+nav a:hover {
+    transform: scale(1.15);
+    color: #56f52f;
+    text-shadow: 2px 2px 5px rgba(179, 179, 179, 0.596);
 }
 
-/* --- MAIN GRID --- */
+body {
+    background-color: #3b0b0b;
+    min-height: 150vh; /* Altura extra para poder ver el efecto */
+}
+
+/* --- GRID Principal --- */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50% Texto | 50% Animación */
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
-    border: 2px solid #333; /* Borde contenedor principal */
-    background: white;
+    border: 2px solid #919191; 
+    background: #3b0b0b;
     margin-top: 20px;
     min-height: 600px;
 }
 
-.text-content {
+.texto-area {
     border: 1px solid #999;
     padding: 20px;
+    color: #56f52f;
+}
+.texto-area h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px; 
+    color: #919191;
 }
 
-/* --- AREA PARALLAX --- */
+/* --- Area del Efecto Parallax --- */
 .parallax-area {
     position: relative; /* Necesario para mover elementos absolutos dentro */
     border: 1px solid #999;
     min-height: 500px;
+    overflow: hidden;
 }
 
-.moving-circle {
-    width: 80px;
-    height: 80px;
-    background-color: #a4c639; /* Verde Android */
-    border-radius: 50%;
+.alanWake {
+    width: 120px;
     position: absolute;
     top: 20px;
     left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
 }
-
-.moving-circle::after {
-    content: "X"; /* La X dentro del círculo */
-}
-
-.target-box {
-    width: 150px;
-    height: 150px;
-    border: 2px solid #333;
+.scratch {
+    width: 180px;
     position: absolute;
     bottom: 20px;
-    right: 20px; /* Esquina inferior derecha */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eee;
+    right: 20px; 
+}
+.alanWake img, .scratch img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* --- FOOTER --- */
 footer {
-    border: 2px solid #6c5ce7;
+    border: 2px solid #919191;
     margin-top: 20px;
     padding: 20px;
-    background: white;
+    background: #3b0b0b;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.footer-texto {
+    font-size: 0.9rem;
+    color: #56f52f;
+}
 
-.social-icons {
+.redes-sociales {
     display: flex;
     gap: 10px;
 }
 
-.icon {
+.iconos {
     width: 30px;
     height: 30px;
-    background: #a4c639;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 30px;
-    font-size: 0.8rem;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.iconos img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /*Ajusta las Imagenes son Recortarlas ni modificarlas*/
 }
