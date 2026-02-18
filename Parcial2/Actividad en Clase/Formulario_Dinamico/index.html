@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios Dinamicos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form action="">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" placeholder="Ingresa un Nombre" id="input-txt-nombre">
+        <br>
+        <label for="nombre">Apellido: </label>
+        <input type="text" name="apellido" placeholder="Ingresa un Apellido" id="input-txt-apellido">
+        <br>
+        <label for="cantidad_correos">Ingresa la cantidad de correos a ingresar</label>
+        <input type="number" name="cantidad_correos" id="cantidad_correos" onchange="cambiarNumero(event)"> <!--read only no deja ingresar datos -->
+        <br>
+        <div class="contenedor_correos" id="contenedor_correos">
+        </div>
+        <br>
+        <button id="btn-confi">Guardar Datos</button>
+    </form>
+</body>
+<script src="js/script.js"></script>
+</html>
