@@ -13,14 +13,26 @@
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" placeholder="Ingresa un Nombre" id="input-txt-nombre">
         <br>
-        <label for="nombre">Apellido: </label>
+        <label for="apellido">Apellido: </label>
         <input type="text" name="apellido" placeholder="Ingresa un Apellido" id="input-txt-apellido">
         <br>
+        <label for="correo">Correo: </label>
+        <input type="email" name="apellido" placeholder="Ingresa un Correo" id="input-correo">
+        <br>
+        <label for="contraseña">Contraseña: </label>
+        <input type="password" name="apellido" placeholder="Ingresa una Contraseña" id="input-contraseña">
+        <br>
+
         <label for="cantidad_correos">Ingresa la cantidad de correos a ingresar</label>
         <input type="number" name="cantidad_correos" id="cantidad_correos" onchange="cambiarNumero(event)"> <!--read only no deja ingresar datos -->
         <br>
         <div class="contenedor_correos" id="contenedor_correos">
         </div>
+        
+        <div id="contenedor_usuarios">
+
+        </div>
+
         <br>
         <button id="btn-confi">Guardar Datos</button>
     </form>
