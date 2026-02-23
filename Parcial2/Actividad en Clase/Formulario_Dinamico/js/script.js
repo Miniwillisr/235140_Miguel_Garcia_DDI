@@ -2,6 +2,8 @@ const nombre = document.querySelector("#input-txt-nombre");
 const apellido = document.querySelector("#input-txt-apellido");
 const botonConfi = document.querySelector("#btn-confi");
 
+const formulario = document.querySelector("#form_2");
+
 const Usuarios = [{ //1
     nombre: "Maria ",
     apellido: "Castro ",
@@ -121,9 +123,11 @@ apellido.addEventListener("change", (e)=>{
 */
 
 class Usuario {
-    constructor(nom, ape) {
+    constructor(nom, ape , correo, contra) {
         this.nombre = nom;
         this.apellido = ape;
+        this.correo = correo;
+        this.contraseña = contra;
     }
 
     mostrarDatos() {
@@ -131,7 +135,7 @@ class Usuario {
     }
 }
 
-//Se creo un objeto y se adigno a una constante.
+//Se creo un objeto y se asigno a una constante.
 let usuario2 = { //aqui el profe puso Let
     nombre: "Juan",
     apellido: "Perez",
@@ -197,3 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
         contenedor_usuarios.appendChild(contenedor_usuario);
     }
 });
+
+function leerDatos(){
+    const datosFormulario = new FormData(formulario);
+
+    const datos = Object.fromEntries(datosFormulario.entries());
+
+    let usuarioNuevo = new Usuario(datos.nombre, datos.apellido, datos.correo, datos.contraseña)
+    console.log(usuarioNuevo);
+}
+

@@ -17,10 +17,10 @@
         <input type="text" name="apellido" placeholder="Ingresa un Apellido" id="input-txt-apellido">
         <br>
         <label for="correo">Correo: </label>
-        <input type="email" name="apellido" placeholder="Ingresa un Correo" id="input-correo">
+        <input type="email" name="correo" placeholder="Ingresa un Correo" id="input-correo">
         <br>
         <label for="contraseña">Contraseña: </label>
-        <input type="password" name="apellido" placeholder="Ingresa una Contraseña" id="input-contraseña">
+        <input type="password" name="contraseña" placeholder="Ingresa una Contraseña" id="input-contraseña">
         <br>
 
         <label for="cantidad_correos">Ingresa la cantidad de correos a ingresar</label>
@@ -30,12 +30,29 @@
         </div>
         
         <div id="contenedor_usuarios">
-
         </div>
-
         <br>
         <button id="btn-confi">Guardar Datos</button>
     </form>
+
+    <form id="form_2">
+        <br>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <br>
+        <label for="apellido">Apellido: </label>
+        <input type="text" name="apellido" placeholder="Apellido">
+        <br>
+        <label for="correo">Correo: </label>
+        <input type="email" name="correo" placeholder="Correo">
+        <br>
+        <label for="contraseña">Contraseña: </label>
+        <input type="password" name="contraseña" placeholder="Contraseña">
+        <br>
+        <button type="button" onclick="leerDatos()" id="btn-confi2">Guardar</button>
+
+    </form>
+
 </body>
 <script src="js/script.js"></script>
 </html>
