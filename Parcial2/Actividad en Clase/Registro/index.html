@@ -5,25 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form id="form_1">
-        <label for="correo">Correo: </label>
-        <input type="email" name="correo" placeholder="Ingresa un Correo" id="input-correo">
-        <br>
-        <label for="contraseña">Contraseña: </label>
-        <input type="password" name="contraseña" placeholder="Ingresa una contraseña" id="input-contra">
-        <br>
-        <br>
-        <button id="btn-confi" onclick="leerDatos()">Iniciar Sesion</button>
-        <button id="btn-regis" onclick="registro()">Registro</button>
-        <br>
-        <br>
+    <div id="inicio">
+        <form id="formInicio">
+            <h1>Iniciar Sesion</h1>
+            <label>Correo: </label>
+            <input type="email" name="correo" placeholder="Ingresa un Correo" id="inicio-correo">
+            <br>
+            <label>Contraseña: </label>
+            <input type="password" name="contraseña" placeholder="Ingresa una contraseña" id="inicio-contra">
+            <br>
+            <br>
+            <button type="button" id="btn-confi" onclick="leerDatos()">Iniciar Sesion</button>
+            <button type="button" id="btn-regis" onclick="mostrarRegistro()">Registro</button>
+        </form>
+    </div>
+    <div id="registro" style="display: none;">
+        <form id="formRegistro">
+            <h1>Registro</h1>
+            <input type="text" id="regUsuario" placeholder="Usuario">
+            <br><br>
 
-        <div class="conte-registro">
-        </div>
-    </form>
+            <input type="text" id="regApellido" placeholder="Apellido">
+            <br><br>
+
+            <input type="email" id="regCorreo" placeholder="Correo">
+            <br><br>
+
+            <input type="password" id="regContra" placeholder="Contraseña">
+            <br><br>
+
+            <input type="password" id="regContra2" placeholder="Confirmar contraseña">
+            <br><br>
+        </form>
+            <button type="button" onclick="regUsuario()">Guardar</button>
+            <button type="button" onclick="volverLogin()">Volver</button>
+    </div>
+
+
 </body>
 <script src="js/script.js"></script>
+
 </html>
