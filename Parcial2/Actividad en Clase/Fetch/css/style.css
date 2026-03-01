@@ -1,0 +1,20 @@
+#pokeCont {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    /* minmax(200px, 1fr) significa que la columna no puede ser más pequeña de 200px y puede crecer hasta tomar una fracción igual del espacio disponible. */
+    grid-gap: 20px; 
+    justify-content: center; 
+    padding: 20px;
+}
+
+
+.tarjeta-Pokemon {  /*Esta nombre viene del JS, ya que ahi se creo la tarjeta*/
+    border: 2px solid #333; /* Mantén los estilos visuales de la tarjeta */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column;
+    box-sizing: border-box;
+}
