@@ -12,7 +12,7 @@ body {
 #inicio, #registro {
     background-color: white;
     padding: 30px 40px;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px; 
     width: 280px; /* Ancho fijo para que no cambien de tamaño */
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -31,7 +31,7 @@ h1 {
 
 label {
     display: block; /* Hace que la etiqueta tome su propia línea */
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left; 
     margin-bottom: 5px;
     font-size: 0.9rem;
 }
