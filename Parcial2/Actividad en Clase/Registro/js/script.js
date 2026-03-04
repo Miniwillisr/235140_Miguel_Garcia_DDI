@@ -1,5 +1,6 @@
 const inicioDiv =document.querySelector("#inicio");
 const registroDiv =document.querySelector("#registro");
+const dashboardDiv = document.querySelector("#dashboard");
 
 const Usuarios = [{
     usuario: "maria",
@@ -71,11 +72,52 @@ function leerDatos() {
     );
     if (usuarioValido) {
         alert("Sesión iniciada");
+        inicioDiv.style.display = "none";
+        dashboardDiv.style.display = "block";
+
+        obtenerGatito();
     } else {
         alert("Correo o contraseña incorrectos");
     }
 
 }
+
+function obtenerGatito() {
+    const headers = new Headers({
+        "Content-Type": "application/json",
+        "x-api-key": "DEMO-API-KEY"
+    });
+    
+    var requestOptions = {
+        method: 'GET',
+        headers: headers,
+        redirect: 'follow'
+    };
+
+    fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1", requestOptions)
+        .then(response => response.json()) // Cambiamos a .json() para manipularlo como objeto
+        .then(result => {
+            // La API devuelve un arreglo, tomamos el primer elemento [0]
+            const urlImagen = result[0].url; 
+            
+            const contenedorGatito = document.querySelector("#info-gatito");
+            contenedorGatito.innerHTML = `<img src="${urlImagen}" alt="Gatito aleatorio" style="max-width: 100%; border-radius: 8px;">`;
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.querySelector("#info-gatito").innerHTML = "Hubo un error con el gatito.";
+        });
+}
+
+function cerrarSesion() {
+    dashboardDiv.style.display = "none";
+    inicioDiv.style.display = "block";
+
+    //Limpiamos los contenedores
+    document.querySelector("#formInicio").reset();
+    document.querySelector("#info-gatito").innerHTML = "Creando Gatito Ideal...";
+}
+
 /*
     if (!usuario || !apellido || !correo || !contra || !contra2) {
         alert("Todos los campos son obligatorios");

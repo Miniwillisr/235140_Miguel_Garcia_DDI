@@ -5,7 +5,7 @@ body {
     justify-content: center; 
     align-items: center; 
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9; 
+    background-color: #d1d1d1; 
 }
 
 /* Estilo base para ambas tarjetas */
@@ -56,4 +56,14 @@ button {
 
 button:hover {
     background-color: #eee; 
+}
+
+#dashboard {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 300px; /* Un poco más ancho para que quepa bien la foto */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 2px solid #28a745; /* Un borde verde para indicar éxito */
 }

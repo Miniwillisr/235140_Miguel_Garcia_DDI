@@ -14,10 +14,10 @@
             <h1>Iniciar Sesion</h1>
             <label>Correo: </label>
             <input type="email" name="correo" placeholder="Ingresa un Correo" id="inicio-correo">
-            
+
             <label>Contraseña: </label>
             <input type="password" name="contraseña" placeholder="Ingresa una contraseña" id="inicio-contra">
-            
+
             <button type="button" id="btn-confi" onclick="leerDatos()">Iniciar Sesion</button>
             <button type="button" id="btn-regis" onclick="mostrarRegistro()">Registro</button>
         </form>
@@ -25,7 +25,8 @@
     <div id="registro" style="display: none;">
         <form id="formRegistro">
             <h1>Registro</h1>
-            <label for="regUsuario">Usuario: </label> <!-- El for Hace que al dar click al texto el usuario vaya a la caja de texto -->
+            <label for="regUsuario">Usuario: </label>
+            <!-- El for Hace que al dar click al texto el usuario vaya a la caja de texto -->
             <input type="text" id="regUsuario" placeholder="Usuario">
 
             <label for="regApellido">Apellido: </label>
@@ -40,11 +41,21 @@
             <label for="regContra2">Confirmar Contraseña: </label>
             <input type="password" id="regContra2" placeholder="Confirmar contraseña">
         </form>
-            <button type="button" onclick="regUsuario()">Guardar</button>
-            <button type="button" onclick="volverLogin()">Volver</button>
+        <button type="button" onclick="regUsuario()">Guardar</button>
+        <button type="button" onclick="volverLogin()">Volver</button>
     </div>
 
+    <div id="dashboard" style="display: none;">
+        <div class="tarjeta-gato">
+            <h2>¡Bienvenido!</h2>
+            <p>Aquí tienes tu Gatito Ideal:</p>
 
+            <div id="info-gatito">Cargando gatito...</div>
+            <p>Todo chiquito, todo panzon...</p>
+            <br>
+            <button type="button" onclick="cerrarSesion()">Cerrar Sesión</button>
+        </div>
+    </div>
 </body>
 <script src="js/script.js"></script>
 
