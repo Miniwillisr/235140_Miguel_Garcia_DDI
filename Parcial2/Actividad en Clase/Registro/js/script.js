@@ -2,18 +2,22 @@ const inicioDiv =document.querySelector("#inicio");
 const registroDiv =document.querySelector("#registro");
 const dashboardDiv = document.querySelector("#dashboard");
 
-const Usuarios = [{
+// Si no hay usuarios guardados en localStorage, carga estos por defecto
+let Usuarios = JSON.parse(localStorage.getItem("usuariosGuardados")) ||  [{
     usuario: "maria",
     apellido: "castro",
     correo: "maria.castro@example.com",
     contraseña: "contraseña123",
 },
-{//2
+{
     usuario: "amancio",
     apellido: "torres",
     correo: "amancio.torres@example.com",
     contraseña: "contraseña456",
 }];
+
+//Guardamos la lista para asegurar que exista en localStorage
+localStorage.setItem("usuariosGuardados", JSON.stringify(Usuarios));
 
 class Usuario {
     constructor(correo, contra) {
@@ -53,8 +57,10 @@ function regUsuario(){
         correo,
         contraseña: contra
     });
-    alert("Usuario registrado correctamente");
+    // Se actualiza el localstorage
+    localStorage.setItem("usuariosGuardados", JSON.stringify(Usuarios));
 
+    alert("Usuario registrado correctamente");
     document.querySelector("#formRegistro").reset();
     volverLogin();
 }
@@ -71,11 +77,12 @@ function leerDatos() {
         user => user.correo === datos.correo && user.contraseña === datos.contraseña
     );
     if (usuarioValido) {
-        alert("Sesión iniciada");
-        inicioDiv.style.display = "none";
-        dashboardDiv.style.display = "block";
+        //alert("Sesión iniciada");
+        //Guardamos la sesion activa en localStorage
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioValido));
 
-        obtenerGatito();
+        //se llama al observador
+        verificarSesion();
     } else {
         alert("Correo o contraseña incorrectos");
     }
@@ -110,24 +117,39 @@ function obtenerGatito() {
 }
 
 function cerrarSesion() {
-    dashboardDiv.style.display = "none";
-    inicioDiv.style.display = "block";
+    //Borramos la sesión activa del localStorage
+    localStorage.removeItem("usuarioActivo");
 
     //Limpiamos los contenedores
     document.querySelector("#formInicio").reset();
     document.querySelector("#info-gatito").innerHTML = "Creando Gatito Ideal...";
+
+    verificarSesion();
 }
 
-/*
-    if (!usuario || !apellido || !correo || !contra || !contra2) {
-        alert("Todos los campos son obligatorios");
-        return;
+function verificarSesion() {
+    //buscamos si hay una sesión activa
+    const sesionActiva = JSON.parse(localStorage.getItem("usuarioActivo"));
 
-        const existe = Usuarios.some(user => user.correo === correo);
+    if (sesionActiva) {
+        // Si hay una sesión activa, mostramos el dashboard
+        inicioDiv.style.display = "none";
+        registroDiv.style.display = "none";
+        dashboardDiv.style.display = "block";
 
-    if (existe) {
-        alert("El correo ya está registrado");
-        return;
+        //Mostramos el Usuario Activo
+        const estadoUsuario = document.querySelector("#dashboard h2");
+        if (estadoUsuario) {
+            estadoUsuario.textContent = `Bienvenido, ${sesionActiva.usuario}!`;
+        }
+        obtenerGatito();
+    }else {
+        // Si no hay sesión activa, mostramos el inicio
+        inicioDiv.style.display = "block";
+        registroDiv.style.display = "none";
+        dashboardDiv.style.display = "none";
     }
 }
-*/
+
+// Verificamos la sesión al cargar la página
+window.addEventListener("load", verificarSesion);
