@@ -122,13 +122,12 @@ function cerrarSesion() {
 
     //Limpiamos los contenedores
     document.querySelector("#formInicio").reset();
-    document.querySelector("#info-gatito").innerHTML = "Creando Gatito Ideal...";
-
+    document.querySelector("#info-gatito").innerHTML = "Creando tu Gatito Ideal...";
     verificarSesion();
 }
 
 function verificarSesion() {
-    //buscamos si hay una sesión activa
+    //observador; buscamos si hay una sesión activa
     const sesionActiva = JSON.parse(localStorage.getItem("usuarioActivo"));
 
     if (sesionActiva) {
