@@ -1,0 +1,94 @@
+.form-container {
+    background-color: #1E293B;
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 450px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    height: fit-content; /* Soluciona el problema de altura */
+    border: 1px solid #334155;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #FBBF24;
+}
+
+.grupo-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    width: 35%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #E2E8F0;
+}
+
+.grupo-input input[type="text"],
+.grupo-input input[type="email"],
+.grupo-input input[type="password"] {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    background-color: #0F172A;
+    /* Fondo del input oscuro */
+    color: #F8FAFC;
+    /* Texto del input claro */
+}
+/* Estilo para el input cuando está Seleccionado */
+.grupo-input input:focus {
+    outline: none;
+    border-color: #38BDF8;
+}
+
+/*Estilo para el input de archivo */
+.grupo-input input[type="file"] {
+    width: 60%;
+    font-size: 0.8rem;
+    color: #a3d900;
+}
+
+.admin-radio .radio-opciones {
+    width: 60%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.admin-radio .radio-opciones label {
+    width: auto;
+    font-weight: normal;
+    color: #E2E8F0;
+}
+
+.botones-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.botones-form button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-confirmar,
+.btn-volver {
+    background-color: #38BDF8; 
+    color: #0F172A; 
+}
+
+.botones-form button:hover {
+    background-color: #7DD3FC;
+}

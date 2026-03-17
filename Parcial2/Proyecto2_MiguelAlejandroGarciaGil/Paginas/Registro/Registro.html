@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockbuster - Registro</title>
+    <link rel="stylesheet" href="../../css/stylePrin.css">
+    <link rel="stylesheet" href="css/styleRegistro.css">
+</head>
+
+<body class="peli-vistaGen">
+
+    <nav class="peli-nav">
+        <div class="nav-container">
+            <h1 class="nav-logo">BlockBuster</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="./Registro.html" class="active">Registro</a></li>
+                <li><a href="../SubirArchivo/SubirArchivo.html">Subir Archivo</a></li>
+                <li><a href="#">Cerrar Sesion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="peli-main">
+        <div class="form-container">
+            <h2>Registro de Usuario</h2>
+            <form id="formRegistro">
+                <div class="grupo-input">
+                    <label for="regNombre">Nombre Comp.</label>
+                    <input type="text" id="regNombre" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="regCorreo">Correo:</label>
+                    <input type="email" id="regCorreo" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="regContra">Contraseña:</label>
+                    <input type="password" id="regContra" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="regVerifContra">Verificar Contra.</label>
+                    <input type="password" id="regVerifContra" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="regFoto">Foto de Perfil</label>
+                    <input type="file" id="regFoto" accept="image/*">
+                </div>
+
+                <div class="grupo-input admin-radio">
+                    <label>Administrador</label>
+                    <div class="radio-opciones">
+                        <input type="radio" id="adminSi" name="esAdmin" value="si">
+                        <label for="adminSi">Sí</label>
+
+                        <input type="radio" id="adminNo" name="esAdmin" value="no" checked>
+                        <label for="adminNo">No</label>
+                    </div>
+                </div>
+
+                <div class="botones-form">
+                    <button type="button" class="btn-confirmar">Confirmar</button>
+                    <button type="button" class="btn-volver">Volver</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+<script src="js/scriptRegistro.js"></script>
+
+</html>

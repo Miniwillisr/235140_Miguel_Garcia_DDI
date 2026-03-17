@@ -3,16 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Peliculas</title>
-    <link rel="stylesheet" href="">
+    <title>Blockbuster - Inicio</title>
+    <link rel="stylesheet" href="css/stylePrin.css">
 </head>
-<body>
-    <h1>Lista de Peliculas</h1>
-    <ul id="movie-list">
-        <!-- Las películas se agregarán aquí dinámicamente, mediante un JSON y un campo en otra página de subida de archivo -->
-    </ul>
+<body class="peli-vistaGen">
+    <nav class="peli-nav">
+        <div class="nav-container">
+            <h1 class="nav-logo">Blockbuster</h1>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="./Paginas/Registro/Registro.html">Registro</a></li>
+                <li><a href="./Paginas/Registro/Registro.html">Subir Archivo</a></li>
+                <li><a href="./Paginas/Registro/Registro.html">Cerrar Sesión</a></li>
+            </ul>
+            <div class="nav-theme">
+               <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </div>
+        </div>
+    </nav>
     
-    
+    <main class="peli-main">
+        <div class="peli-grid">
+            <div class="peli-card">
+                <div class="card-peli-content">
+                    </div>
+                <div class="card-peli-info">
+                    <h3 class="card-peli-title">Película 1</h3>
+                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                </div>
+            </div>
+
+            <div class="peli-card">
+                <div class="card-peli-content"></div>
+                <div class="card-peli-info">
+                    <h3 class="card-peli-title">Película 2</h3>
+                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                </div>
+            </div>
+
+            <div class="peli-card">
+                <div class="card-peli-content"></div>
+                <div class="card-peli-info">
+                    <h3 class="card-peli-title">Película 3</h3>
+                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                </div>
+            </div>
+
+            <div class="peli-card">
+                <div class="card-peli-content"></div>
+                <div class="card-peli-info">
+                    <h3 class="card-peli-title">Película 4</h3>
+                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
 </body>
-<script src=""></script>
+<script src="js/scriptPrin.js"></script>
 </html>
