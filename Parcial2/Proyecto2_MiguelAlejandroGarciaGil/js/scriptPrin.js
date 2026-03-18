@@ -31,12 +31,11 @@ function verificarSesion() {
     }
 }
 
-// Hacemos que el observador arranque apenas carga la página
 // La función se ejecutará apenas cargue la página
 window.addEventListener('load', () => {
-    // Primero revisamos la sesión 
+    // Primero revisa si hay una sesión activa.
     verificarSesion(); 
-    // Luego cargamos la cartelera dinámica
+    // Luego cargamos la cartelera dinámica.
     renderizarCartelera();
 });
 
@@ -90,7 +89,7 @@ linkCerrarSesion.addEventListener('click', (evento) => {
 // Función para la cartelera dinámica
 function renderizarCartelera() {
     const contenedor = document.querySelector('#contenedorCartelera');
-
+    
     if (!contenedor) return; // Por seguridad, si no existe el contenedor, salimos.
 
     // Traemos las películas del localStorage y las convertimos a objeto
@@ -101,13 +100,13 @@ function renderizarCartelera() {
     // Verificamos si hay películas guardadas
     if (peliculasDB.length === 0) {
         // Si no hay películas, mostramos un mensaje
-        contenedor.innerHTML = '<p style="color: #94A3B8; grid-column: 1/-1; text-align: center;">Por favor, un administrador debe cargar el archivo JSON de películas.</p>';
+        contenedor.innerHTML = '<p style="color: #94A3B8; grid-column: 1/-1; text-align: center;">Un administrador debe cargar el archivo JSON de películas.</p>';
         return;
     }
 
     //Se crea una tarjeta por cada película
     peliculasDB.forEach(peli => {
-        // Creamos la estructura HTML de la tarjeta usando un "Template Literal" (las comillas invertidas ` ` )
+        // Crea la estructura HTML de la tarjeta usando un "Template Literal" (las comillas invertidas ` ` )
         const htmlTarjeta = `
             <div class="peli-card">
                 <div class="card-peli-content" style="background-color: ${peli.colorFondo};">
@@ -118,8 +117,7 @@ function renderizarCartelera() {
                 </div>
             </div>
         `;
-
-        // Inyectamos la nueva tarjeta en el contenedor
+        // Agregamos la tarjeta al contenedor
         contenedor.innerHTML += htmlTarjeta;
     });
 }

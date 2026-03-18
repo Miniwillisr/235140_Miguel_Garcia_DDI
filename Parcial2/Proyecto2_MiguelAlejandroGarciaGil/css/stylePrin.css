@@ -24,13 +24,10 @@ body {
 .peli-nav {
     background-color: #1E293B;
     padding: 15px 0;
-    border-bottom: 2px solid #38BDF8;
-    /* Borde azul de acento */
-    position: sticky;
-    /* Se queda pegada arriba */
+    border-bottom: 2px solid #38BDF8; /* Borde azul de acento */
+    position: sticky;/* Se queda pegada arriba */
     top: 0;
-    z-index: 100;
-    /* Asegura que esté sobre las tarjetas al hacer scroll */
+    z-index: 100; /* Asegura que esté sobre las tarjetas al hacer scroll */
 }
 
 .nav-container {
@@ -43,8 +40,7 @@ body {
 }
 
 .nav-logo {
-    color: #FBBF24;
-    /* Logo BlockBuster en amarillo */
+    color: #FBBF24; /* Logo BlockBuster en amarillo */
     font-size: 1.8rem;
     font-weight: bold;
 }
@@ -68,7 +64,7 @@ body {
 }
 
 .nav-links li:last-child {
-    border-left: 2px solid #2271b1;
+    border-left: 2px solid #2271b1; /* Separador de Cerrar Sesión */
     padding-left: 20px;
 }
 
@@ -81,27 +77,21 @@ body {
 
 /* Estilo principal y de cuadrícula */
 .peli-main {
-    flex-grow: 1;
-    /* Ocupa el espacio restante del body */
+    flex-grow: 1; /* Ocupa el espacio restante del body */
     padding: 40px 0;
     display: flex;
-    justify-content: center;
-    /* Centra la cuadrícula */
-    align-items: flex-start;
-    /* Alinea al inicio para que las tarjetas empiecen desde arriba */
+    justify-content: center; /* Centra la cuadrícula */
+    align-items: flex-start; /* Alinea al inicio para que las tarjetas empiecen desde arriba */
 }
 
 .peli-grid {
     max-width: 1200px;
     width: 100%;
     padding: 0 20px;
-    display: grid;
-    /* Crea tantas columnas de 200px como quepan de forma automática */
+    display: grid; /* Crea tantas columnas de 200px como quepan de forma automática */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 30px;
-    /* Espacio entre tarjetas */
-    justify-items: center;
-    /* Centra las tarjetas dentro de cada celda del grid */
+    grid-gap: 45px;/* Espacio entre tarjetas */
+    justify-items: center; /* Centra las tarjetas dentro de cada celda del grid */
 }
 
 /* Estilo de la tarjeta y su efecto */
@@ -110,63 +100,50 @@ body {
     width: 250px;
     height: 250px;
     /* Altura fija para el contenedor base */
-    background-color: #0e3b4d;
-    /*Fondo general de las tarjetas*/
+    background-color: #0e3b4d; /*Fondo general de las tarjetas*/
     border: 2px solid #1c2841;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Transiciones suaves */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
 }
 
 .peli-card:hover {
-    transform: translateY(-5px);
-    /* Pequeño movimiento hacia arriba de la tarjeta */
+    transform: translateY(-5px); /* Pequeño movimiento hacia arriba de la tarjeta */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Contenido base de la tarjeta (el recuadro de color/imagen) */
+/* Contenido base de la tarjeta */
 .card-peli-content {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    border-radius: 10px;
-    /* Bordes internos para que coincidan con la tarjeta */
+    border-radius: 10px;/* Bordes internos para que coincidan con la tarjeta */
 }
 
 /* Pestaña de información */
 .card-peli-info {
-    position: absolute;
-    /* Se posiciona con respecto a .peli-card */
-    bottom: 0;
-    /* Empieza en la base */
+    position: absolute; /* Se posiciona con respecto a .peli-card */
+    bottom: 0; /* Empieza en la base */
     left: 0;
     right: 0;
-    background-color: #2271b1;
-    /*Color de fondo de la pestaña*/
+    background-color: #2271b1; /*Color de fondo de la pestaña*/
     padding: 15px;
     text-align: left;
     height: 50px;
     overflow: hidden;
     transition: height 0.5s ease;
-    /* Transición suave  */
-    z-index: 10;
-    /* Se asegura de estar sobre el contenido base al subir */
+    z-index: 10; /* Se asegura de estar sobre el contenido base al subir */
     border-top: 2px solid #1c2841;
-    /* Borde superior sutil */
 }
 
 .peli-card:hover .card-peli-info {
-    height: 100%;
-    /* La pestaña de info que sube para ocupar toda la tarjeta */
-    background-color: #1a1a2ea6;
-    /* Fondo Semi-transparente */
-    overflow-y: auto;
-    /* Permite hacer scroll interno si la reseña es larga */
+    height: 100%; /* La pestaña de info que sube para ocupar toda la tarjeta */
+    background-color: #1a1a2ea6; /* Fondo Semi-transparente */
+    overflow-y: auto; /* Permite hacer scroll interno si la reseña es larga */
 }
 
 .card-peli-title {
@@ -174,17 +151,14 @@ body {
     font-weight: bold;
     color: #ffff9c;
     margin-bottom: 10px;
-    white-space: nowrap;
-    /* Evita que el título se divida en líneas si es largo */
+    white-space: nowrap; /* Evita que el título se divida en líneas si es largo */
     overflow: hidden;
-    text-overflow: ellipsis;
-    /* Agrega "..." si el título es muy largo */
+    text-overflow: ellipsis; /* Agrega "..." si el título es muy largo */
 }
 
 .card-peli-review {
     font-size: 0.9rem;
     color: #ffdf6c;
-    /* Reseña en amarillo un poco más oscuro */
     margin-top: 10px;
 }
 
@@ -199,7 +173,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Asegura que esté por encima de TODO (películas y menú) */
+    z-index: 1000; /* Asegura que esté por encima de Todo */
 }
 
 /* Estructura del formulario (Copia del diseño de registro) */
