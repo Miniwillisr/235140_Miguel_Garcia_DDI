@@ -3,14 +3,17 @@
     margin: 0;
     padding: 0;
 }
+
 body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía más moderna */
-    color: #E2E8F0; /* Texto base en gris muy claro, no amarillo puro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Tipografía más moderna */
+    color: #E2E8F0;
+    /* Texto base en gris muy claro, no amarillo puro */
     line-height: 1.6;
 }
 
 /* Vista General */
-.peli-vistaGen{
+.peli-vistaGen {
     background-color: #0F172A;
     display: flex;
     flex-direction: column;
@@ -19,12 +22,15 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía má
 
 /* Barra de navegacion */
 .peli-nav {
-    background-color: #1E293B; 
+    background-color: #1E293B;
     padding: 15px 0;
-    border-bottom: 2px solid #38BDF8; /* Borde azul de acento */
-    position: sticky; /* Se queda pegada arriba */
+    border-bottom: 2px solid #38BDF8;
+    /* Borde azul de acento */
+    position: sticky;
+    /* Se queda pegada arriba */
     top: 0;
-    z-index: 100; /* Asegura que esté sobre las tarjetas al hacer scroll */
+    z-index: 100;
+    /* Asegura que esté sobre las tarjetas al hacer scroll */
 }
 
 .nav-container {
@@ -37,7 +43,8 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía má
 }
 
 .nav-logo {
-    color: #FBBF24; /* Logo BlockBuster en amarillo */
+    color: #FBBF24;
+    /* Logo BlockBuster en amarillo */
     font-size: 1.8rem;
     font-weight: bold;
 }
@@ -50,34 +57,38 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía má
 
 .nav-links a {
     text-decoration: none;
-    color: #00e5ff; 
+    color: #00e5ff;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: #ffdf6c; 
+    color: #ffdf6c;
 }
 
 .nav-links li:last-child {
     border-left: 2px solid #2271b1;
     padding-left: 20px;
 }
- /* Opcion de cambiar de temas* */
+
+/* Opcion de cambiar de temas* */
 .nav-theme {
     font-size: 1.2rem;
     cursor: pointer;
-    color: #ffdf6c; 
+    color: #ffdf6c;
 }
 
 /* Estilo principal y de cuadrícula */
 .peli-main {
-    flex-grow: 1; /* Ocupa el espacio restante del body */
+    flex-grow: 1;
+    /* Ocupa el espacio restante del body */
     padding: 40px 0;
     display: flex;
-    justify-content: center; /* Centra la cuadrícula */
-    align-items: flex-start; /* Alinea al inicio para que las tarjetas empiecen desde arriba */ 
+    justify-content: center;
+    /* Centra la cuadrícula */
+    align-items: flex-start;
+    /* Alinea al inicio para que las tarjetas empiecen desde arriba */
 }
 
 .peli-grid {
@@ -86,28 +97,34 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía má
     padding: 0 20px;
     display: grid;
     /* Crea tantas columnas de 200px como quepan de forma automática */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    grid-gap: 30px; /* Espacio entre tarjetas */
-    justify-items: center; /* Centra las tarjetas dentro de cada celda del grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 30px;
+    /* Espacio entre tarjetas */
+    justify-items: center;
+    /* Centra las tarjetas dentro de cada celda del grid */
 }
 
 /* Estilo de la tarjeta y su efecto */
 .peli-card {
-    position: relative; 
-    width: 250px; 
-    height: 250px; /* Altura fija para el contenedor base */
-    background-color: #0e3b4d; /*Fondo general de las tarjetas*/
-    border: 2px solid #1c2841; 
-    border-radius: 12px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
-    overflow: hidden; 
+    position: relative;
+    width: 250px;
+    height: 250px;
+    /* Altura fija para el contenedor base */
+    background-color: #0e3b4d;
+    /*Fondo general de las tarjetas*/
+    border: 2px solid #1c2841;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Transiciones suaves */
 }
 
 .peli-card:hover {
-    transform: translateY(-5px); /* Pequeño movimiento hacia arriba de la tarjeta */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: translateY(-5px);
+    /* Pequeño movimiento hacia arriba de la tarjeta */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Contenido base de la tarjeta (el recuadro de color/imagen) */
@@ -117,43 +134,139 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía má
     bottom: 0;
     left: 0;
     right: 0;
-    border-radius: 10px; /* Bordes internos para que coincidan con la tarjeta */
+    border-radius: 10px;
+    /* Bordes internos para que coincidan con la tarjeta */
 }
 
 /* Pestaña de información */
 .card-peli-info {
-    position: absolute; /* Se posiciona con respecto a .peli-card */
-    bottom: 0; /* Empieza en la base */
+    position: absolute;
+    /* Se posiciona con respecto a .peli-card */
+    bottom: 0;
+    /* Empieza en la base */
     left: 0;
     right: 0;
-    background-color: #2271b1; /*Color de fondo de la pestaña*/
+    background-color: #2271b1;
+    /*Color de fondo de la pestaña*/
     padding: 15px;
-    text-align: left; 
-    height: 50px; 
-    overflow: hidden; 
-    transition: height 0.5s ease; /* Transición suave  */
-    z-index: 10; /* Se asegura de estar sobre el contenido base al subir */
-    border-top: 2px solid #1c2841; /* Borde superior sutil */
+    text-align: left;
+    height: 50px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    /* Transición suave  */
+    z-index: 10;
+    /* Se asegura de estar sobre el contenido base al subir */
+    border-top: 2px solid #1c2841;
+    /* Borde superior sutil */
 }
 
 .peli-card:hover .card-peli-info {
-    height: 100%; /* La pestaña de info que sube para ocupar toda la tarjeta */
-    background-color: #1a1a2ea6; /* Fondo Semi-transparente */
-    overflow-y: auto; /* Permite hacer scroll interno si la reseña es larga */
+    height: 100%;
+    /* La pestaña de info que sube para ocupar toda la tarjeta */
+    background-color: #1a1a2ea6;
+    /* Fondo Semi-transparente */
+    overflow-y: auto;
+    /* Permite hacer scroll interno si la reseña es larga */
 }
 
 .card-peli-title {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #ffff9c; 
+    color: #ffff9c;
     margin-bottom: 10px;
-    white-space: nowrap; /* Evita que el título se divida en líneas si es largo */
+    white-space: nowrap;
+    /* Evita que el título se divida en líneas si es largo */
     overflow: hidden;
-    text-overflow: ellipsis; /* Agrega "..." si el título es muy largo */
+    text-overflow: ellipsis;
+    /* Agrega "..." si el título es muy largo */
 }
 
 .card-peli-review {
     font-size: 0.9rem;
-    color: #ffdf6c; /* Reseña en amarillo un poco más oscuro */
+    color: #ffdf6c;
+    /* Reseña en amarillo un poco más oscuro */
     margin-top: 10px;
+}
+
+/* Modal de Inicio de Sesión (Ventana Flotante)  */
+.modal-overlay {
+    position: fixed; /* Se queda fijo en la pantalla aunque se haga scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);/* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de TODO (películas y menú) */
+}
+
+/* Estructura del formulario (Copia del diseño de registro) */
+.login-form {
+    background-color: #1E293B;
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    color: #F8FAFC;
+    border: 1px solid #334155;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: normal;
+    color: #FBBF24;
+}
+
+.login-form .grupo-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.login-form .grupo-input label {
+    width: 35%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #E2E8F0;
+}
+
+.login-form .grupo-input input[type="email"],
+.login-form .grupo-input input[type="password"] {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    background-color: #0F172A;
+    color: #F8FAFC;
+}
+
+.login-form .grupo-input input:focus {
+    outline: none;
+    border-color: #38BDF8;
+}
+
+/* Botones del modal */
+.login-form .botones-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.login-form .botones-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    background-color: #38BDF8;
+    color: #0F172A;
+}
+
+.login-form .botones-form button:hover {
+    background-color: #7DD3FC;
 }

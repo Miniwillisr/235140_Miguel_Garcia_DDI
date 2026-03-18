@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "El Padrino",
+        "resena": "Una obra maestra del cine sobre la mafia y la familia. Las actuaciones son legendarias.",
+        "colorFondo": "#E0FFFF"
+    },
+    {
+        "titulo": "Matrix",
+        "resena": "Un hacker descubre que la realidad es una simulación. Increíbles efectos especiales.",
+        "colorFondo": "#FFDAB9"
+    },
+    {
+        "titulo": "Interestelar",
+        "resena": "Un viaje épico a través del espacio y el tiempo para salvar a la humanidad.",
+        "colorFondo": "#E6E6FA"
+    },
+    {
+        "titulo": "Gladiador",
+        "resena": "Un general romano traicionado busca venganza en la arena del coliseo.",
+        "colorFondo": "#F0E68C"
+    }
+]

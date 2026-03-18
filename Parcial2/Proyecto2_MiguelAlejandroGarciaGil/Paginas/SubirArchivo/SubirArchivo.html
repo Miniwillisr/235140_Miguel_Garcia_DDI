@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockBuster - Subir Archivo</title>
+    
+    <link rel="stylesheet" href="../../css/stylePrin.css">
+    <link rel="stylesheet" href="css/styleSubirArchivo.css">
+</head>
+<body class="peli-vistaGen">
+
+    <nav class="peli-nav">
+        <div class="nav-container">
+            <h1 class="nav-logo">BlockBuster</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../Registro/Registro.html">Registro</a></li>
+                <li><a href="./SubirArchivo.html" class="active" id="navSubirArchivo">Subir Archivo</a></li> 
+                <li><a href="#" id="navCerrarSesion">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="peli-main">
+        <div class="upload-container">
+            <h2>Actualizar Cartelera</h2>
+            <p>Selecciona el archivo JSON con la información de las películas para subirlo al sistema.</p>
+            
+            <form id="formSubirArchivo">
+                <div class="drop-zone">
+                    <span class="drop-icon">📁</span>
+                    <input type="file" id="archivoJSON" accept=".json" required>
+                </div>
+                <div class="botones-form">
+                    <button type="button" class="btn-confirmar" id="btnCargarJSON">Cargar Reseñas</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    </body>
+<script src="js/scriptSubirArchivo.js"></script>
+</html>

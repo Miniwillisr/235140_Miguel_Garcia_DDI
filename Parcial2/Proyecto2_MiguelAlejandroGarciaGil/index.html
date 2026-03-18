@@ -13,8 +13,8 @@
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="./Paginas/Registro/Registro.html">Registro</a></li>
-                <li><a href="./Paginas/Registro/Registro.html">Subir Archivo</a></li>
-                <li><a href="./Paginas/Registro/Registro.html">Cerrar Sesión</a></li>
+                <li><a href="./Paginas/SubirArchivo/SubirArchivo.html">Subir Archivo</a></li>
+                <li><a href="#" id="navCerrarSesion">Cerrar Sesión</a></li>
             </ul>
             <div class="nav-theme">
                <span class="sun-icon">☀️</span>
@@ -23,41 +23,29 @@
         </div>
     </nav>
     
+    <div id="modalLogin" class="modal-overlay" style="display: flex;">
+        <div class="login-form">
+            <h2>Iniciar Sesión</h2>
+            <form id="formInicioBlockbuster">
+                <div class="grupo-input">
+                    <label for="inicioCorreo">Correo:</label>
+                    <input type="email" id="inicioCorreo" required>
+                </div>
+                <div class="grupo-input">
+                    <label for="inicioContra">Contraseña:</label>
+                    <input type="password" id="inicioContra" required>
+                </div>
+                <div class="botones-form">
+                    <button type="button" class="btn-confirmar" id="btnIngresar">Iniciar Sesión</button>
+                    <button type="button" class="btn-volver" id="btnIrRegistro">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
     <main class="peli-main">
-        <div class="peli-grid">
-            <div class="peli-card">
-                <div class="card-peli-content">
-                    </div>
-                <div class="card-peli-info">
-                    <h3 class="card-peli-title">Película 1</h3>
-                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-            </div>
-
-            <div class="peli-card">
-                <div class="card-peli-content"></div>
-                <div class="card-peli-info">
-                    <h3 class="card-peli-title">Película 2</h3>
-                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-            </div>
-
-            <div class="peli-card">
-                <div class="card-peli-content"></div>
-                <div class="card-peli-info">
-                    <h3 class="card-peli-title">Película 3</h3>
-                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-            </div>
-
-            <div class="peli-card">
-                <div class="card-peli-content"></div>
-                <div class="card-peli-info">
-                    <h3 class="card-peli-title">Película 4</h3>
-                    <p class="card-peli-review">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-            </div>
-
+        <div class="peli-grid" id="contenedorCartelera">
         </div>
     </main>
 </body>
