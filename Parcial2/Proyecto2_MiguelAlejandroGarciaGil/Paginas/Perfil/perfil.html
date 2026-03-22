@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockBuster - Mi Perfil</title>
+    <link rel="stylesheet" href="../../css/stylePrin.css">
+    <link rel="stylesheet" href="css/stylePerfil.css">
+</head>
+<body class="peli-vistaGen">
+
+    <nav class="peli-nav">
+        <div class="nav-container">
+            <h1 class="nav-logo">BlockBuster</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../Registro/Registro.html">Registro</a></li>
+                <li><a href="../SubirArchivo/SubirArchivo.html" id="navSubirArchivo">Subir Archivo</a></li> 
+                <li><a href="./Perfil.html" class="active" id="navPerfil">Mi Perfil</a></li>
+                <li><a href="#" id="navCerrarSesion">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="peli-main">
+        <div class="form-container">
+            <h2>Editar Perfil</h2>
+            <form id="formEditarPerfil">
+                <div class="grupo-input">
+                    <label for="editNombre">Nombre Comp.</label>
+                    <input type="text" id="editNombre" required>
+                </div>
+                <div class="grupo-input">
+                    <label for="editCorreo">Correo:</label>
+                    <input type="email" id="editCorreo" readonly title="El correo no se puede cambiar">
+                </div>
+                <div class="grupo-input">
+                    <label for="editContra">Contraseña:</label>
+                    <input type="text" id="editContra" required>
+                </div>
+                <div class="grupo-input">
+                    <label for="editFoto">Cambiar Foto</label>
+                    <input type="file" id="editFoto" accept="image/*">
+                </div>
+                <div class="botones-form">
+                    <button type="button" class="btn-confirmar" id="btnGuardarPerfil" style="width: 100%;">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/scriptPerfil.js"></script>
+</body>
+</html>

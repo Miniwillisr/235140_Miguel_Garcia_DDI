@@ -6,6 +6,7 @@ const btnIrRegistro = document.querySelector('#btnIrRegistro');
 // Seleccionamos los enlaces del menú de navegación (usando los href como referencia)
 const linkSubirArchivo = document.querySelector('a[href="./Paginas/SubirArchivo/SubirArchivo.html"]');
 const linkCerrarSesion = document.querySelector('a[href="#"]'); // El que tiene href="#"
+const linkPerfil = document.querySelector('#navPerfil');
 
 // Obserbador de sesión
 function verificarSesion() {
@@ -16,6 +17,9 @@ function verificarSesion() {
         // Si hay un usuario activo
         modalLogin.style.display = 'none'; // Ocultamos el cuadro de login
         linkCerrarSesion.style.display = 'block'; // Mostramos la opción de salir
+
+        if(linkPerfil)
+            linkPerfil.style.display='block'; // muestra el Perfil
 
         // Verificamos el booleano 'administrador'
         if (usuarioActivo.administrador === true) {
@@ -28,6 +32,9 @@ function verificarSesion() {
         modalLogin.style.display = 'flex'; // Obligamos a ver el cuadro de login
         linkCerrarSesion.style.display = 'none'; // Ocultamos la opción de salir
         linkSubirArchivo.style.display = 'none'; // Por seguridad, ocultamos subir archivo
+    
+        if(linkPerfil)
+            linkPerfil.style.display='none'; //oculta el perfil
     }
 }
 
