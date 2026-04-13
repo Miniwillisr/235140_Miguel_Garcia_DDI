@@ -15,7 +15,7 @@
         "colorFondo": "#E6E6FA"
     },
     {
-        "titulo": "Gladiador",
+        "titulo": "Pelicula 2",
         "resena": "Un general romano traicionado busca venganza en la arena del coliseo.",
         "colorFondo": "#F0E68C"
     }
