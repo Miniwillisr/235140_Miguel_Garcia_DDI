@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <canvas id="lienzo" class="lienzo" width="1500" height="800">
+    <canvas id="lienzo" class="lienzo" width="1000" 
+    height="800"
+    onmousedown="PresionarClick(event)"
+    onmousemove="MantenerClick(event)" 
+    onmouseup="SoltarClick(event)">
     </canvas>
 </body>
 <script src="js/script.js"></script>
