@@ -1,4 +1,6 @@
-import { Cuadrado } from "./figuras.js"; //Importamos la Clase Cuadrado del Archivo figuras.js
+//import { Cuadrado } from "./figuras.js"; //Importamos la Clase Cuadrado del Archivo figuras.js
+import { Circulo } from "./figuras.js";
+
 
 const canvas = document.querySelector('#lienzo'); //refencia al Canvas del HTML
 const ctx = canvas.getContext("2d"); //Contexto del Canvas, es el que nos permite dibujar en el lienzo
@@ -124,13 +126,22 @@ function SoltarClick(event) {
     //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
     //DibujarLinea();
 
+    /*
     //Creamos un nuevo Cuadrado
     const cuadro = new Cuadrado(
         posicionesCursor, "green", "crimson", 5
     ); 
-
     figuras.push(cuadro);
-    cuadro.Dibujar(ctx); //Dibujamos el Cuadrado en el Canvas        
+    cuadro.Dibujar(ctx); //Dibujamos el Cuadrado en el Canvas
+    */
+
+    //Creamos un nuevo Circulo
+    const circulo = new Circulo(
+        posicionesCursor, "purple", "magenta", 5
+    );
+    figuras.push(circulo);
+    circulo.Dibujar(ctx);
+
     console.log(figuras);
     presionado = false;
 }
