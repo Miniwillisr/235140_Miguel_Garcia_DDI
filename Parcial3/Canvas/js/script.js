@@ -1,5 +1,9 @@
+import { Cuadrado } from "./figuras.js"; //Importamos la Clase Cuadrado del Archivo figuras.js
+
 const canvas = document.querySelector('#lienzo'); //refencia al Canvas del HTML
 const ctx = canvas.getContext("2d"); //Contexto del Canvas, es el que nos permite dibujar en el lienzo
+const figuras = []; //Array para guardar las figuras que se van a dibujar
+
 
 const posicionesCursor ={ //Objeto para guardar las posiciones del Cursor
     iniciales: {x: 0, y: 0}, //Ponemos en 0 para evitar errores
@@ -7,6 +11,11 @@ const posicionesCursor ={ //Objeto para guardar las posiciones del Cursor
 }
 
 let presionado = false; //Variable para saber si se esta presionando el Click
+
+//Se cambio al Script porque se esta utilizando modulos, por lo que no se pueden usar los eventos en el HTML, se deben usar en el JS
+canvas.addEventListener("mousedown", (event) => PresionarClick(event)); //Evento para detectar cuando se presiona el Click
+canvas.addEventListener("mousemove", (event) => MantenerClick(event)); //Evento para detectar cuando se mueve el Mouse
+canvas.addEventListener("mouseup", (event) => SoltarClick(event)); //Evento para detectar cuando se suelta el Click
 
 /*
 ctx.beginPath(); // Inicia un Nuevo Trazo, en este caso un Cuadrado
@@ -101,9 +110,9 @@ function MantenerClick(event) {
     console.log("Se Mantiene el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
-    DibujarLinea();
+    //DibujarLinea();
     if(presionado){
-        DibujarLinea();
+        //DibujarLinea();
     }
     //ctx.lineTo(event.offsetX, event.offsetY);
 }
@@ -113,7 +122,16 @@ function SoltarClick(event) {
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
     //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
-    DibujarLinea();
+    //DibujarLinea();
+
+    //Creamos un nuevo Cuadrado
+    const cuadro = new Cuadrado(
+        posicionesCursor, "green", "crimson", 5
+    ); 
+
+    figuras.push(cuadro);
+    cuadro.Dibujar(ctx); //Dibujamos el Cuadrado en el Canvas        
+    console.log(figuras);
     presionado = false;
 }
 
