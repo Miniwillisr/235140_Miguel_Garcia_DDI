@@ -1,5 +1,12 @@
 class Figura { //Clase padre, Solo propiedades genericas
-    constructor(colorLinea = 'black', colorRelleno = 'black', grosorLinea = 5) { //Lo mejor es inicar las variables por si el usuario no las ingresa
+    constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) { //Lo mejor es inicar las variables por si el usuario no las ingresa
+        this.posicionesCursor = posicionesCursor || {
+            iniciales: { x: 0, y: 0 },
+            finales: { x: 0, y: 0 }
+        }
+        this.colorLinea = colorLinea;
+        this.grosorLinea = grosorLinea;
+
         this.colorLinea = colorLinea;
         this.colorRelleno = colorRelleno;
         this.grosorLinea = grosorLinea;
@@ -32,10 +39,10 @@ export class Cuadrado extends Figura { //export para poder usar la clase en otro
 
 //Dibuja un criculo
 export class Circulo extends Figura {
-    constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
-        super(colorLinea, colorRelleno, grosorLinea);
+    constructor(posicionesCursor = {}, colorLinea = 'black', colorRelleno = 'black', grosorLinea = 5) {  //Se pueden inicializar valores para que el usuario no los ingrese
+        super(colorLinea, colorRelleno, grosorLinea); //Super para llamar al constructor de la clase padre y inicializar las variables genericas
         //El centro del circulo es el punto exacto donde se hace click
-        this.centroX = (posicionesCursor.iniciales.x + posicionesCursor.finales.x) / 2; 
+        this.centroX = (posicionesCursor.iniciales.x + posicionesCursor.finales.x) / 2;
         this.centroY = (posicionesCursor.iniciales.y + posicionesCursor.finales.y) / 2;
 
         //Calculamos el radio utilizando la distancia entre las posiciones iniciales y finales utilizando el teorema de pitagoras.
@@ -55,5 +62,50 @@ export class Circulo extends Figura {
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
+    }
+}
+
+//Dibuja una linea
+export class Linea {
+    constructor(posicionesCursor, colorLinea = 'black', grosorLinea = 5) {
+        this.posicionesCursor = posicionesCursor || {
+            iniciales: { x: 0, y: 0 },
+            finales: { x: 0, y: 0 }
+        }
+        this.colorLinea = colorLinea;
+        this.grosorLinea = grosorLinea;
+
+    }
+    Dibujar(ctx) {
+        ctx.beginPath();
+        ctx.lineCap = "round"; //Para que las lineas se vean mas suaves
+        ctx.lineJoin = "round"; // Para que la union de las lineas se vea mas suave
+        ctx.strokeStyle = this.colorLinea;
+        ctx.lineWidth = this.grosorLinea;
+
+        ctx.moveTo(this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y); //Punto de Inicio
+        ctx.lineTo(this.posicionesCursor.finales.x, this.posicionesCursor.finales.y);
+        ctx.stroke();
+        ctx.closePath();
+    }
+}
+
+//Sticker
+export class Sticker {
+    constructor(posicionesCursor, urlImagen) {
+        this.posicionesCursor = posicionesCursor || {
+            iniciales: { x: 0, y: 0 },
+            finales: { x: 0, y: 0 }
+        }
+        this.imagen = new Image();
+        this.imagen.src = urlImagen;
+
+    }
+    Dibujar(ctx) {
+        ctx.beginPath();
+        ctx.drawImage(this.imagen, 0, 0, this.imagen.width, this.imagen.height,
+            this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y, this.imagen.width/2, this.imagen.height/2
+        );
+
     }
 }

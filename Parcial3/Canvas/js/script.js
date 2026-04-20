@@ -1,5 +1,5 @@
 //import { Cuadrado } from "./figuras.js"; //Importamos la Clase Cuadrado del Archivo figuras.js
-import { Circulo } from "./figuras.js";
+import { Circulo, Linea, Sticker } from "./figuras.js";
 
 
 const canvas = document.querySelector('#lienzo'); //refencia al Canvas del HTML
@@ -7,9 +7,9 @@ const ctx = canvas.getContext("2d"); //Contexto del Canvas, es el que nos permit
 const figuras = []; //Array para guardar las figuras que se van a dibujar
 
 
-const posicionesCursor ={ //Objeto para guardar las posiciones del Cursor
-    iniciales: {x: 0, y: 0}, //Ponemos en 0 para evitar errores
-    finales: {x: 0, y: 0}
+const posicionesCursor = { //Objeto para guardar las posiciones del Cursor
+    iniciales: { x: 0, y: 0 }, //Ponemos en 0 para evitar errores
+    finales: { x: 0, y: 0 }
 }
 
 let presionado = false; //Variable para saber si se esta presionando el Click
@@ -113,7 +113,12 @@ function MantenerClick(event) {
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
     //DibujarLinea();
-    if(presionado){
+    if (presionado) {
+        const linea = new Linea(posicionesCursor, "blue", 5);
+        linea.Dibujar(ctx);
+        //Al finalizar e; trazo de la linea le decimos que el punto inicial es el punto final para que se pueda seguir dibujando
+        posicionesCursor.iniciales.x = posicionesCursor.finales.x;
+        posicionesCursor.iniciales.y = posicionesCursor.finales.y;
         //DibujarLinea();
     }
     //ctx.lineTo(event.offsetX, event.offsetY);
@@ -123,6 +128,16 @@ function SoltarClick(event) {
     console.log("Se Solto el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
+
+    const sticker = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
+    sticker.Dibujar(ctx);
+
+    /* Dibujar una linea
+    const linea = new Linea(posicionesCursor, "blue", 5);
+    figuras.push(linea);
+    linea.Dibujar(ctx);
+    */
+
     //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
     //DibujarLinea();
 
@@ -135,14 +150,14 @@ function SoltarClick(event) {
     cuadro.Dibujar(ctx); //Dibujamos el Cuadrado en el Canvas
     */
 
-    //Creamos un nuevo Circulo
+    /* //Creamos un nuevo Circulo
     const circulo = new Circulo(
         posicionesCursor, "purple", "magenta", 5
     );
     figuras.push(circulo);
     circulo.Dibujar(ctx);
-
-    console.log(figuras);
+    */
+    //console.log(figuras);
     presionado = false;
 }
 
