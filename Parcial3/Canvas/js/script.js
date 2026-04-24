@@ -1,11 +1,18 @@
-//import { Cuadrado } from "./figuras.js"; //Importamos la Clase Cuadrado del Archivo figuras.js
-import { Circulo, Linea, Sticker } from "./figuras.js";
-
+//Importamos la Clase Cuadrado del Archivo figuras.js
+import { Cuadrado, Circulo, Linea, Sticker } from "./figuras.js";
 
 const canvas = document.querySelector('#lienzo'); //refencia al Canvas del HTML
 const ctx = canvas.getContext("2d"); //Contexto del Canvas, es el que nos permite dibujar en el lienzo
-const figuras = []; //Array para guardar las figuras que se van a dibujar
-
+const elementos = []; //Array para guardar las figuras que se van a dibujar
+const opciones = {
+    pincel: false,
+    linea: false,
+    cuadrado: false,
+    circulo: false,
+    triangulo: false,
+    sticker: false,
+    borrador: false,
+}
 
 const posicionesCursor = { //Objeto para guardar las posiciones del Cursor
     iniciales: { x: 0, y: 0 }, //Ponemos en 0 para evitar errores
@@ -18,6 +25,24 @@ let presionado = false; //Variable para saber si se esta presionando el Click
 canvas.addEventListener("mousedown", (event) => PresionarClick(event)); //Evento para detectar cuando se presiona el Click
 canvas.addEventListener("mousemove", (event) => MantenerClick(event)); //Evento para detectar cuando se mueve el Mouse
 canvas.addEventListener("mouseup", (event) => SoltarClick(event)); //Evento para detectar cuando se suelta el Click
+
+
+//Eventos para los botones de las opciones, nos ayuda a saber la opcion activa
+document.querySelector("#btn_pincel").addEventListener("click", () => { cambiarOpcion("pincel"); })
+document.querySelector("#btn_linea").addEventListener("click", () => { cambiarOpcion("linea"); })
+document.querySelector("#btn_cuadro").addEventListener("click", () => { cambiarOpcion("cuadrado"); })
+document.querySelector("#btn_circulo").addEventListener("click", () => { cambiarOpcion("circulo"); })
+document.querySelector("#btn_triangulo").addEventListener("click", () => { cambiarOpcion("triangulo"); })
+document.querySelector("#btn_sticker").addEventListener("click", () => { cambiarOpcion("sticker"); })
+document.querySelector("#btn_borrador").addEventListener("click", () => { cambiarOpcion("borrador"); })
+
+function cambiarOpcion(opcion) {
+    for (let clave in opciones) {
+        opciones[clave] = false; //Ponemos todas las opciones en false para que solo se active la que se selecciono
+        console.log(clave);
+    }
+    opciones[opcion] = true; //Activamos la opcion seleccionada
+}
 
 /*
 ctx.beginPath(); // Inicia un Nuevo Trazo, en este caso un Cuadrado
@@ -114,25 +139,63 @@ function MantenerClick(event) {
     posicionesCursor.finales.y = event.offsetY;
     //DibujarLinea();
     if (presionado) {
-        const linea = new Linea(posicionesCursor, "blue", 5);
-        linea.Dibujar(ctx);
-        //Al finalizar e; trazo de la linea le decimos que el punto inicial es el punto final para que se pueda seguir dibujando
-        posicionesCursor.iniciales.x = posicionesCursor.finales.x;
-        posicionesCursor.iniciales.y = posicionesCursor.finales.y;
+        let elemento;
+        if (opciones.pincel) {
+            //opcion de dibujar con el pincel
+            
+        }
+        else if (opciones.linea) {
+            //opcion de dibujar una linea
+            elemento = new Linea(posicionesCursor, "blue", 5);
+        }
+        else if (opciones.cuadrado) {
+            //opcion de dibujar un cuadrado
+            elemento = new Cuadrado(posicionesCursor, "green", "blue", 5);
+
+        }
+        else if (opciones.circulo) {
+            //opcion de dibujar un circulo
+            elemento = new Circulo(posicionesCursor, "purple", "magenta", 5);
+        }
+        else if (opciones.triangulo) {
+            //opcion de dibujar un triangulo
+        }
+        else if (opciones.sticker) {
+            //opcion de dibujar un sticker
+            elemento = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
+        }
+        else if (opciones.borrador) {
+            //opcion de borrar
+        }
+        else {
+
+        }
+
+        /*const linea = new Linea(posicionesCursor, "blue", 5);
+        linea.Dibujar(ctx);.*/
+        //Al finalizar el trazo de la linea le decimos que el punto inicial es el punto final para que se pueda seguir dibujando
+        elementos.push(elemento);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
+        elemento.Dibujar(ctx);
+
+       /* posicionesCursor.iniciales.x = posicionesCursor.finales.x;
+        posicionesCursor.iniciales.y = posicionesCursor.finales.y;*/
         //DibujarLinea();
     }
     //ctx.lineTo(event.offsetX, event.offsetY);
 }
-
 function SoltarClick(event) {
     console.log("Se Solto el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
 
+    /*//Dibujar un Sticker
     const sticker = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
     sticker.Dibujar(ctx);
+    */
 
-    /* Dibujar una linea
+    /*
+    Dibujar una linea
     const linea = new Linea(posicionesCursor, "blue", 5);
     figuras.push(linea);
     linea.Dibujar(ctx);

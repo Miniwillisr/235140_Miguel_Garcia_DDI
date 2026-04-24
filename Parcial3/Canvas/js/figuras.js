@@ -13,7 +13,7 @@ class Figura { //Clase padre, Solo propiedades genericas
     }
 }
 
-/* Dibuja un Cuadrado
+//Dibuja un Cuadrado
 export class Cuadrado extends Figura { //export para poder usar la clase en otros archivos
     constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
         super(colorLinea, colorRelleno, grosorLinea); //Llamamos al constructor de la clase padre para inicializar las variables genericas
@@ -35,7 +35,7 @@ export class Cuadrado extends Figura { //export para poder usar la clase en otro
         ctx.closePath();
     }
 }
-*/
+
 
 //Dibuja un criculo
 export class Circulo extends Figura {
