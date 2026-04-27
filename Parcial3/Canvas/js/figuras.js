@@ -16,7 +16,7 @@ class Figura { //Clase padre, Solo propiedades genericas
 //Dibuja un Cuadrado
 export class Cuadrado extends Figura { //export para poder usar la clase en otros archivos
     constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
-        super(colorLinea, colorRelleno, grosorLinea); //Llamamos al constructor de la clase padre para inicializar las variables genericas
+        super(posicionesCursor, colorLinea, colorRelleno, grosorLinea); //Llamamos al constructor de la clase padre para inicializar las variables genericas
         this.posicionX = Math.min(posicionesCursor.iniciales.x, posicionesCursor.finales.x);
         this.posicionY = Math.min(posicionesCursor.iniciales.y, posicionesCursor.finales.y);
        
@@ -40,7 +40,7 @@ export class Cuadrado extends Figura { //export para poder usar la clase en otro
 //Dibuja un criculo
 export class Circulo extends Figura {
     constructor(posicionesCursor = {}, colorLinea = 'black', colorRelleno = 'black', grosorLinea = 5) {  //Se pueden inicializar valores para que el usuario no los ingrese
-        super(colorLinea, colorRelleno, grosorLinea); //Super para llamar al constructor de la clase padre y inicializar las variables genericas
+        super(posicionesCursor, colorLinea, colorRelleno, grosorLinea); //Super para llamar al constructor de la clase padre y inicializar las variables genericas
         //El centro del circulo es el punto exacto donde se hace click
         this.centroX = (posicionesCursor.iniciales.x + posicionesCursor.finales.x) / 2;
         this.centroY = (posicionesCursor.iniciales.y + posicionesCursor.finales.y) / 2;

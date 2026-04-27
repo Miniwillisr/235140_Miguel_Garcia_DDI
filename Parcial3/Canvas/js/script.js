@@ -140,29 +140,35 @@ function MantenerClick(event) {
     //DibujarLinea();
     if (presionado) {
         let elemento;
+        //Se copian las posiciones para evitar que se modifiquen las posiciones originales mientras se dibuja
+        let copiaPosiciones = {
+            iniciales: { x: posicionesCursor.iniciales.x, y: posicionesCursor.iniciales.y },
+            finales: { x: posicionesCursor.finales.x, y: posicionesCursor.finales.y }
+        };
+
         if (opciones.pincel) {
             //opcion de dibujar con el pincel
             
         }
         else if (opciones.linea) {
             //opcion de dibujar una linea
-            elemento = new Linea(posicionesCursor, "blue", 5);
+            elemento = new Linea(copiaPosiciones, "blue", 5);
         }
         else if (opciones.cuadrado) {
             //opcion de dibujar un cuadrado
-            elemento = new Cuadrado(posicionesCursor, "green", "blue", 5);
+            elemento = new Cuadrado(copiaPosiciones, "green", "blue", 5);
 
         }
         else if (opciones.circulo) {
             //opcion de dibujar un circulo
-            elemento = new Circulo(posicionesCursor, "purple", "magenta", 5);
+            elemento = new Circulo(copiaPosiciones, "purple", "magenta", 5);
         }
         else if (opciones.triangulo) {
             //opcion de dibujar un triangulo
         }
         else if (opciones.sticker) {
             //opcion de dibujar un sticker
-            elemento = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
+            elemento = new Sticker(copiaPosiciones, "../Recursos/Totodile.png");
         }
         else if (opciones.borrador) {
             //opcion de borrar
@@ -170,12 +176,12 @@ function MantenerClick(event) {
         else {
 
         }
-
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
         /*const linea = new Linea(posicionesCursor, "blue", 5);
         linea.Dibujar(ctx);.*/
         //Al finalizar el trazo de la linea le decimos que el punto inicial es el punto final para que se pueda seguir dibujando
         elementos.push(elemento);
-        ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
+        
         elemento.Dibujar(ctx);
 
        /* posicionesCursor.iniciales.x = posicionesCursor.finales.x;
@@ -189,7 +195,8 @@ function SoltarClick(event) {
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
 
-    /*//Dibujar un Sticker
+    /*
+    Dibujar un Sticker
     const sticker = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
     sticker.Dibujar(ctx);
     */
