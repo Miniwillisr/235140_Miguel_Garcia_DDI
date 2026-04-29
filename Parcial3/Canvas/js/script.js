@@ -127,14 +127,14 @@ function detectarClick(event) {
 */
 
 function PresionarClick(event) {
-    console.log("Se Presiono el Click");
+    //console.log("Se Presiono el Click");
     posicionesCursor.iniciales.x = event.offsetX;
     posicionesCursor.iniciales.y = event.offsetY;
     presionado = true;
 }
 
 function MantenerClick(event) {
-    console.log("Se Mantiene el Click");
+    //console.log("Se Mantiene el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
     //DibujarLinea();
@@ -176,58 +176,82 @@ function MantenerClick(event) {
         else {
 
         }
-        ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
-        /*const linea = new Linea(posicionesCursor, "blue", 5);
-        linea.Dibujar(ctx);.*/
-        //Al finalizar el trazo de la linea le decimos que el punto inicial es el punto final para que se pueda seguir dibujando
-        elementos.push(elemento);
-        
-        elemento.Dibujar(ctx);
 
-       /* posicionesCursor.iniciales.x = posicionesCursor.finales.x;
-        posicionesCursor.iniciales.y = posicionesCursor.finales.y;*/
-        //DibujarLinea();
+        elemento.Dibujar(ctx, canvas);
     }
     //ctx.lineTo(event.offsetX, event.offsetY);
 }
 function SoltarClick(event) {
-    console.log("Se Solto el Click");
+   // console.log("Se Solto el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
 
-    /*
-    Dibujar un Sticker
-    const sticker = new Sticker(posicionesCursor, "../Recursos/Totodile.png");
-    sticker.Dibujar(ctx);
-    */
+    let elemento;
 
-    /*
-    Dibujar una linea
-    const linea = new Linea(posicionesCursor, "blue", 5);
-    figuras.push(linea);
-    linea.Dibujar(ctx);
-    */
+    //Filtro de Color
+    const imgeData = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight); //Obtenemos los datos de la imagen del Canvas
+    const data = imgeData.data; //Obtenemos el arreglo de datos de la imagen
+    for (let i = 0; i < data.length; i+=4) { //i+=4 porque cada pixel tiene 4 datos (R, G, B, A) 
+        let rojo = data[i] //Rojo 
+        let verde = data[i + 1] //Verde
+        let azul = data[i + 2] //Azul
+        let alfa = data[i + 3] //Alfa (Transparencia)
 
-    //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
-    //DibujarLinea();
+        data[i] = rojo + 50; //Aumentamos el valor del rojo para darle un efecto de filtro
+        data[i + 1] = verde / 2; //Disminuimos el valor para darle un efecto de filtro
+        data[i + 2] = azul / 2;
+        data[i + 3] = alfa; //No modificamos el valor del alfa para mantener la transparencia
+    }
+    ctx.putImageData(imgeData, 0, 0); //Volvemos a poner los datos de la imagen en el Canvas para mostrar el efecto del filtro
+    
+    if (presionado) {
+        let elemento;
+        //Se copian las posiciones para evitar que se modifiquen las posiciones originales mientras se dibuja
+        let copiaPosiciones = {
+            iniciales: { x: posicionesCursor.iniciales.x, y: posicionesCursor.iniciales.y },
+            finales: { x: posicionesCursor.finales.x, y: posicionesCursor.finales.y }
+        };
 
-    /*
-    //Creamos un nuevo Cuadrado
-    const cuadro = new Cuadrado(
-        posicionesCursor, "green", "crimson", 5
-    ); 
-    figuras.push(cuadro);
-    cuadro.Dibujar(ctx); //Dibujamos el Cuadrado en el Canvas
-    */
+        if (opciones.pincel) {
+            //opcion de dibujar con el pincel
+            
+        }
+        else if (opciones.linea) {
+            //opcion de dibujar una linea
+            elemento = new Linea(copiaPosiciones, "blue", 5);
+            
+        }
+        else if (opciones.cuadrado) {
+            //opcion de dibujar un cuadrado
+            elemento = new Cuadrado(copiaPosiciones, "green", "blue", 5);
 
-    /* //Creamos un nuevo Circulo
-    const circulo = new Circulo(
-        posicionesCursor, "purple", "magenta", 5
-    );
-    figuras.push(circulo);
-    circulo.Dibujar(ctx);
-    */
-    //console.log(figuras);
+        }
+        else if (opciones.circulo) {
+            //opcion de dibujar un circulo
+            elemento = new Circulo(copiaPosiciones, "purple", "magenta", 5);
+        }
+        else if (opciones.triangulo) {
+            //opcion de dibujar un triangulo
+        }
+        else if (opciones.sticker) {
+            //opcion de dibujar un sticker
+            elemento = new Sticker(copiaPosiciones, "../Recursos/Totodile.png");
+        }
+        else if (opciones.borrador) {
+            //opcion de borrar
+        }
+        else {
+
+        }
+        //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
+        elementos.push(elemento);
+        console.log(elementos);
+        elementos.forEach(elemento => 
+            elemento.Dibujar(ctx, canvas)
+        ); //Dibujamos todos los elementos del Array para que no se borren los anteriores
+
+    }
+
     presionado = false;
 }
 
@@ -238,4 +262,15 @@ function DibujarLinea() {
     ctx.lineTo(posicionesCursor.finales.x, posicionesCursor.finales.y);
     ctx.stroke();
     ctx.closePath();
+}
+
+function Renderizar() {
+    for (let i = 0; i < elementos.length; i++) {
+        elementos[i].Dibujar(ctx);
+    }
+}
+
+function Limpiar() {
+    elementos = []; //Limpiamos el Array de Elementos para que no se vuelvan a dibujar
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 }

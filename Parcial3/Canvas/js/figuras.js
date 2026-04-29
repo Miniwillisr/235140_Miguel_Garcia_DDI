@@ -19,12 +19,13 @@ export class Cuadrado extends Figura { //export para poder usar la clase en otro
         super(posicionesCursor, colorLinea, colorRelleno, grosorLinea); //Llamamos al constructor de la clase padre para inicializar las variables genericas
         this.posicionX = Math.min(posicionesCursor.iniciales.x, posicionesCursor.finales.x);
         this.posicionY = Math.min(posicionesCursor.iniciales.y, posicionesCursor.finales.y);
-       
+
         this.alto = Math.abs(posicionesCursor.finales.y - posicionesCursor.iniciales.y);
-        this.ancho = Math.abs(posicionesCursor.finales.x - posicionesCursor.iniciales.x); 
+        this.ancho = Math.abs(posicionesCursor.finales.x - posicionesCursor.iniciales.x);
     }
-    
-    Dibujar(ctx) {
+
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.fillStyle = this.colorRelleno;
         ctx.strokeStyle = this.colorLinea;
@@ -51,7 +52,8 @@ export class Circulo extends Figura {
         this.radio = Math.sqrt((catetoX * catetoX) + (catetoY * catetoY)) / 2; //El radio es la mitad de la distancia entre las posiciones iniciales y finales
         // Si no se divide entre 2, el circulo se dibujaria con un radio igual a la distancia entre las posiciones iniciales y finales 
     }
-    Dibujar(ctx) {
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas        ctx.beginPath();
         ctx.beginPath();
         ctx.fillStyle = this.colorRelleno;
         ctx.strokeStyle = this.colorLinea;
@@ -76,7 +78,8 @@ export class Linea {
         this.grosorLinea = grosorLinea;
 
     }
-    Dibujar(ctx) {
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.lineCap = "round"; //Para que las lineas se vean mas suaves
         ctx.lineJoin = "round"; // Para que la union de las lineas se vea mas suave
@@ -101,10 +104,11 @@ export class Sticker {
         this.imagen.src = urlImagen;
 
     }
-    Dibujar(ctx) {
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.drawImage(this.imagen, 0, 0, this.imagen.width, this.imagen.height,
-            this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y, this.imagen.width/2, this.imagen.height/2
+            this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y, this.imagen.width / 2, this.imagen.height / 2
         );
 
     }
