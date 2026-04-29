@@ -113,3 +113,84 @@ export class Sticker {
 
     }
 }
+
+/*
+//Triangulo
+export class Triangulo extends Figura {
+    constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
+        super(posicionesCursor, colorLinea, colorRelleno, grosorLinea);
+        this.punto1 = { x: posicionesCursor.iniciales.x, y: posicionesCursor.iniciales.y };
+        this.punto2 = { x: posicionesCursor.finales.x, y: posicionesCursor.finales.y };
+        this.punto3 = { x: posicionesCursor.iniciales.x, y: posicionesCursor.finales.y };
+    }
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        ctx.beginPath();
+        ctx.fillStyle = this.colorRelleno;
+        ctx.strokeStyle = this.colorLinea;
+        ctx.lineWidth = this.grosorLinea;
+        ctx.moveTo(this.punto1.x, this.punto1.y);
+        ctx.lineTo(this.punto2.x, this.punto2.y);
+        ctx.lineTo(this.punto3.x, this.punto3.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+}
+    */
+
+//Corazon
+export class Corazon extends Figura {
+    constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
+        super(posicionesCursor, colorLinea, colorRelleno, grosorLinea);
+        this.x = (posicionesCursor.iniciales.x + posicionesCursor.finales.x) / 2; // Constante para X para poder tener la simetria del Corazon mas facil
+        this.y = (posicionesCursor.iniciales.y + posicionesCursor.finales.y) / 2; // Constante para Y para poder tener la simetria del Corazon mas facil
+    }
+    Dibujar(ctx, canvas) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        ctx.beginPath();
+        ctx.fillStyle = this.colorRelleno;
+        ctx.strokeStyle = this.colorLinea;
+        ctx.lineWidth = this.grosorLinea;
+        ctx.moveTo(this.x, this.y);
+        ctx.bezierCurveTo(this.x, this.y - 100, this.x - 150, this.y - 100, this.x - 150, this.y);
+        ctx.bezierCurveTo(this.x - 150, this.y + 100, this.x, this.y + 150, this.x, this.y + 200);
+        ctx.bezierCurveTo(this.x, this.y + 150, this.x + 150, this.y + 100, this.x + 150, this.y);
+        ctx.bezierCurveTo(this.x + 150, this.y - 100, this.x, this.y - 100, this.x, this.y);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+    }
+}
+
+//Pincel 
+export class Pincel {
+    constructor(posicionesCursor, colorLinea, grosorLinea) {
+        this.posicionesCursor = posicionesCursor || {
+            iniciales: { x: 0, y: 0 },
+            finales: { x: 0, y: 0 }
+        }
+        this.colorLinea = colorLinea;
+        this.grosorLinea = grosorLinea;
+    }
+    Dibujar(ctx, canvas) {
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.strokeStyle = this.colorLinea;
+        ctx.lineWidth = this.grosorLinea;
+
+        ctx.moveTo(this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y);
+        ctx.lineTo(this.posicionesCursor.finales.x, this.posicionesCursor.finales.y);
+        ctx.stroke();
+    }
+}
+
+
+/*
+//Dibujar con Click
+function detectarClick(event) {
+    console.log(event.offsetX, " - ", event.offsetY); //Coordenadas del Click
+    ctx.beginPath();
+    ctx.fillRect(event.offsetX, event.offsetY, 100, 100);  //
+}
+*/

@@ -1,5 +1,5 @@
 //Importamos la Clase Cuadrado del Archivo figuras.js
-import { Cuadrado, Circulo, Linea, Sticker } from "./figuras.js";
+import { Cuadrado, Circulo, Linea, Sticker, Corazon, Pincel} from "./figuras.js";
 
 const canvas = document.querySelector('#lienzo'); //refencia al Canvas del HTML
 const ctx = canvas.getContext("2d"); //Contexto del Canvas, es el que nos permite dibujar en el lienzo
@@ -9,7 +9,7 @@ const opciones = {
     linea: false,
     cuadrado: false,
     circulo: false,
-    triangulo: false,
+    corazon: false,
     sticker: false,
     borrador: false,
 }
@@ -32,7 +32,7 @@ document.querySelector("#btn_pincel").addEventListener("click", () => { cambiarO
 document.querySelector("#btn_linea").addEventListener("click", () => { cambiarOpcion("linea"); })
 document.querySelector("#btn_cuadro").addEventListener("click", () => { cambiarOpcion("cuadrado"); })
 document.querySelector("#btn_circulo").addEventListener("click", () => { cambiarOpcion("circulo"); })
-document.querySelector("#btn_triangulo").addEventListener("click", () => { cambiarOpcion("triangulo"); })
+document.querySelector("#btn_corazon").addEventListener("click", () => { cambiarOpcion("corazon"); })
 document.querySelector("#btn_sticker").addEventListener("click", () => { cambiarOpcion("sticker"); })
 document.querySelector("#btn_borrador").addEventListener("click", () => { cambiarOpcion("borrador"); })
 
@@ -43,64 +43,6 @@ function cambiarOpcion(opcion) {
     }
     opciones[opcion] = true; //Activamos la opcion seleccionada
 }
-
-/*
-ctx.beginPath(); // Inicia un Nuevo Trazo, en este caso un Cuadrado
-ctx.fillStyle = "blue"; // Color de Relleno
-ctx.strokeStyle = "red"; // Color del Contorno
-ctx.lineWidth = 10; // Ancho del Contorno
-ctx.fillRect(100, 100, 500, 500); // Dibuja un Cuadrado con relleno (x, y, alto, ancho)
-ctx.strokeRect(100, 100, 500, 500); // Contorno de la figura
-
-//Circulo
-ctx.beginPath(); 
-ctx.fillStyle = "red"; // Color de Relleno
-ctx.strokeStyle = "blue"; // Color del Contorno
-ctx.lineWidth = 10; // Ancho del Contorno
-ctx.arc(670, 600, 50, 0, Math.PI * 2); // Dibuja un Circulo (x, y, radio, anguloInicial, anguloFinal)
-ctx.fill();
-ctx.stroke();
-
-//Lineas 
-ctx.beginPath();
-ctx.moveTo(10, 50); //Punto de Inicio (x, y)
-ctx.lineTo(10, 100); //Punto Final (x, y)
-ctx.lineTo(100, 600);
-ctx.lineTo(10, 800);
-ctx.stroke();
-*/
-
-/* Ejercicio de Clase
-//Dibujar un Triangulo
-ctx.beginPath();
-ctx.fillStyle = "yellow";
-ctx.strokeStyle = "black";
-ctx.lineWidth = 5;
-ctx.moveTo(100, 100);
-ctx.lineTo(300, 100);
-ctx.lineTo(200, 300);
-ctx.lineTo(100, 100);
-ctx.fill();
-ctx.stroke();
-
-//Corazon
-ctx.beginPath();
-ctx.fillStyle = "pink";
-ctx.strokeStyle = "red";
-ctx.lineWidth = 5;
-
-let x = 500; // Constante para X para poder tener la simetria del Corazon mas facil
-let y = 300; // Constante para Y para poder tener la simetria del Corazon mas facil
-
-ctx.moveTo(x, y);
-ctx.bezierCurveTo(x, y - 100, x - 150, y - 100, x - 150, y); //Curva Izquierda superior
-ctx.bezierCurveTo(x - 150, y + 100, x, y + 150, x, y + 200); //Curva Inferior Izquierda
-ctx.bezierCurveTo(x, y + 150, x + 150, y + 100, x + 150, y); //Curva Derecha Inferior
-ctx.bezierCurveTo(x + 150, y - 100, x, y - 100, x, y); //Curva Superior derecha
-
-ctx.fill();
-ctx.stroke();
-*/
 
 /*
 //Dibujar una Imagen y texto
@@ -117,14 +59,7 @@ imagen.onload = () => { //Evento que se ejecuta para poder dibujar la imagen
     ); // Imagen, sx, sy,
 }
 */
-/*
-//Dibujar con Click
-function detectarClick(event) {
-    console.log(event.offsetX, " - ", event.offsetY); //Coordenadas del Click
-    ctx.beginPath();
-    ctx.fillRect(event.offsetX, event.offsetY, 100, 100);
-}
-*/
+
 
 function PresionarClick(event) {
     //console.log("Se Presiono el Click");
@@ -140,6 +75,7 @@ function MantenerClick(event) {
     //DibujarLinea();
     if (presionado) {
         let elemento;
+        
         //Se copian las posiciones para evitar que se modifiquen las posiciones originales mientras se dibuja
         let copiaPosiciones = {
             iniciales: { x: posicionesCursor.iniciales.x, y: posicionesCursor.iniciales.y },
@@ -148,7 +84,10 @@ function MantenerClick(event) {
 
         if (opciones.pincel) {
             //opcion de dibujar con el pincel
-            
+
+            elemento = new Pincel(copiaPosiciones, "black", 5);
+            copiaPosiciones.iniciales.x = event.offsetX;
+            copiaPosiciones.iniciales.y = event.offsetY;
         }
         else if (opciones.linea) {
             //opcion de dibujar una linea
@@ -157,37 +96,35 @@ function MantenerClick(event) {
         else if (opciones.cuadrado) {
             //opcion de dibujar un cuadrado
             elemento = new Cuadrado(copiaPosiciones, "green", "blue", 5);
-
         }
         else if (opciones.circulo) {
             //opcion de dibujar un circulo
             elemento = new Circulo(copiaPosiciones, "purple", "magenta", 5);
         }
-        else if (opciones.triangulo) {
-            //opcion de dibujar un triangulo
+        else if (opciones.corazon) {
+            //opcion de dibujar un corazon
+            elemento = new Corazon(copiaPosiciones, "pink", "red", 5);
         }
         else if (opciones.sticker) {
             //opcion de dibujar un sticker
             elemento = new Sticker(copiaPosiciones, "../Recursos/Totodile.png");
         }
         else if (opciones.borrador) {
-            //opcion de borrar
+            //opcion de borrar para limpiar el Canvas
+        
         }
         else {
 
         }
-
         elemento.Dibujar(ctx, canvas);
     }
-    //ctx.lineTo(event.offsetX, event.offsetY);
 }
 function SoltarClick(event) {
    // console.log("Se Solto el Click");
     posicionesCursor.finales.x = event.offsetX;
     posicionesCursor.finales.y = event.offsetY;
-
-    let elemento;
-
+    
+/*
     //Filtro de Color
     const imgeData = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight); //Obtenemos los datos de la imagen del Canvas
     const data = imgeData.data; //Obtenemos el arreglo de datos de la imagen
@@ -203,9 +140,9 @@ function SoltarClick(event) {
         data[i + 3] = alfa; //No modificamos el valor del alfa para mantener la transparencia
     }
     ctx.putImageData(imgeData, 0, 0); //Volvemos a poner los datos de la imagen en el Canvas para mostrar el efecto del filtro
-    
+  */
+
     if (presionado) {
-        let elemento;
         //Se copian las posiciones para evitar que se modifiquen las posiciones originales mientras se dibuja
         let copiaPosiciones = {
             iniciales: { x: posicionesCursor.iniciales.x, y: posicionesCursor.iniciales.y },
@@ -214,44 +151,38 @@ function SoltarClick(event) {
 
         if (opciones.pincel) {
             //opcion de dibujar con el pincel
-            
+            //elemento = new Pincel(copiaPosiciones, "black", 5);
         }
         else if (opciones.linea) {
             //opcion de dibujar una linea
-            elemento = new Linea(copiaPosiciones, "blue", 5);
-            
+            elementos.push(new Linea(copiaPosiciones, "blue", 5));
         }
         else if (opciones.cuadrado) {
             //opcion de dibujar un cuadrado
-            elemento = new Cuadrado(copiaPosiciones, "green", "blue", 5);
-
+            elementos.push(new Cuadrado(copiaPosiciones, "green", "blue", 5));
         }
         else if (opciones.circulo) {
             //opcion de dibujar un circulo
-            elemento = new Circulo(copiaPosiciones, "purple", "magenta", 5);
+            elementos.push(new Circulo(copiaPosiciones, "purple", "magenta", 5));
         }
-        else if (opciones.triangulo) {
-            //opcion de dibujar un triangulo
+        else if (opciones.corazon) {
+            //opcion de dibujar un corazon
+            elementos.push(new Corazon(copiaPosiciones, "pink", "red", 5));
         }
         else if (opciones.sticker) {
             //opcion de dibujar un sticker
-            elemento = new Sticker(copiaPosiciones, "../Recursos/Totodile.png");
+            elementos.push(new Sticker(copiaPosiciones, "../Recursos/Totodile.png"));
         }
         else if (opciones.borrador) {
-            //opcion de borrar
+            //opcion de borrar para limpiar el Canvas
+            
         }
         else {
 
         }
-        //ctx.clearRect(0, 0, canvas.width, canvas.height); //Limpiar todo el Canvas
-        elementos.push(elemento);
-        console.log(elementos);
-        elementos.forEach(elemento => 
-            elemento.Dibujar(ctx, canvas)
-        ); //Dibujamos todos los elementos del Array para que no se borren los anteriores
 
     }
-
+    Renderizar();
     presionado = false;
 }
 
@@ -266,7 +197,7 @@ function DibujarLinea() {
 
 function Renderizar() {
     for (let i = 0; i < elementos.length; i++) {
-        elementos[i].Dibujar(ctx);
+        elementos[i].Dibujar(ctx, canvas);
     }
 }
 
