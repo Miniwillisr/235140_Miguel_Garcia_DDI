@@ -25,7 +25,6 @@ export class Cuadrado extends Figura { //export para poder usar la clase en otro
     }
 
     Dibujar(ctx, canvas) {
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.fillStyle = this.colorRelleno;
         ctx.strokeStyle = this.colorLinea;
@@ -53,7 +52,6 @@ export class Circulo extends Figura {
         // Si no se divide entre 2, el circulo se dibujaria con un radio igual a la distancia entre las posiciones iniciales y finales 
     }
     Dibujar(ctx, canvas) {
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas        ctx.beginPath();
         ctx.beginPath();
         ctx.fillStyle = this.colorRelleno;
         ctx.strokeStyle = this.colorLinea;
@@ -79,7 +77,6 @@ export class Linea {
 
     }
     Dibujar(ctx, canvas) {
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.lineCap = "round"; //Para que las lineas se vean mas suaves
         ctx.lineJoin = "round"; // Para que la union de las lineas se vea mas suave
@@ -105,7 +102,6 @@ export class Sticker {
 
     }
     Dibujar(ctx, canvas) {
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight); //Limpiar todo el Canvas
         ctx.beginPath();
         ctx.drawImage(this.imagen, 0, 0, this.imagen.width, this.imagen.height,
             this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y, this.imagen.width / 2, this.imagen.height / 2
@@ -143,20 +139,41 @@ export class Triangulo extends Figura {
 export class Corazon extends Figura {
     constructor(posicionesCursor, colorLinea, colorRelleno, grosorLinea) {
         super(posicionesCursor, colorLinea, colorRelleno, grosorLinea);
-        this.x = (posicionesCursor.iniciales.x + posicionesCursor.finales.x) / 2; // Constante para X para poder tener la simetria del Corazon mas facil
-        this.y = (posicionesCursor.iniciales.y + posicionesCursor.finales.y) / 2; // Constante para Y para poder tener la simetria del Corazon mas facil
+        this.x = Math.min(posicionesCursor.iniciales.x, posicionesCursor.finales.x);
+        this.y = Math.min(posicionesCursor.iniciales.y, posicionesCursor.finales.y);
+
+        //El ancho y alto que calculan la distancia entre las posiciones iniciales y finales
+        this.ancho = Math.abs(posicionesCursor.finales.x - posicionesCursor.iniciales.x);
+        this.alto = Math.abs(posicionesCursor.finales.y - posicionesCursor.iniciales.y);
     }
     Dibujar(ctx, canvas) {
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        //Quite el clearRect para que se dibujen las figuras sin que se borren en todas las figuras
         ctx.beginPath();
         ctx.fillStyle = this.colorRelleno;
         ctx.strokeStyle = this.colorLinea;
         ctx.lineWidth = this.grosorLinea;
-        ctx.moveTo(this.x, this.y);
-        ctx.bezierCurveTo(this.x, this.y - 100, this.x - 150, this.y - 100, this.x - 150, this.y);
-        ctx.bezierCurveTo(this.x - 150, this.y + 100, this.x, this.y + 150, this.x, this.y + 200);
-        ctx.bezierCurveTo(this.x, this.y + 150, this.x + 150, this.y + 100, this.x + 150, this.y);
-        ctx.bezierCurveTo(this.x + 150, this.y - 100, this.x, this.y - 100, this.x, this.y);
+
+        let centroX = this.x + (this.ancho / 2);
+        let superiorY = this.y;
+        let altura = this.alto;
+        let mitadAncho = this.ancho / 2;
+
+        ctx.moveTo(centroX, superiorY + altura);
+
+        // Mitad izquierda del corazón (curva hacia arriba)
+        ctx.bezierCurveTo(
+            centroX - mitadAncho, superiorY + (altura / 2), // PC1: Jala a la izquierda
+            centroX - mitadAncho, superiorY,                // PC2: Jala a la esquina superior izquierda
+            centroX, superiorY + (altura / 4)               // Destino: El hundimiento central en la parte superior
+        );
+
+        // Mitad derecha del corazón (curva de regreso hacia abajo)
+        ctx.bezierCurveTo(
+            centroX + mitadAncho, superiorY,                // PC1: Jala a la esquina superior derecha
+            centroX + mitadAncho, superiorY + (altura / 2), // PC2: Jala a la derecha
+            centroX, superiorY + altura                     // Destino: De vuelta al pico inferior
+        );
+
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
@@ -185,12 +202,28 @@ export class Pincel {
     }
 }
 
+//Borrador
+export class Borrador {
+    constructor(posicionesCursor, grosorLinea = 15) { // Le damos un grosor mayor para que sea fácil borrar
+        this.posicionesCursor = posicionesCursor || {
+            iniciales: { x: 0, y: 0 },
+            finales: { x: 0, y: 0 }
+        };
+        this.grosorLinea = grosorLinea;
+    }
+    Dibujar(ctx, canvas) {
+        ctx.beginPath();
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.lineWidth = this.grosorLinea;
 
-/*
-//Dibujar con Click
-function detectarClick(event) {
-    console.log(event.offsetX, " - ", event.offsetY); //Coordenadas del Click
-    ctx.beginPath();
-    ctx.fillRect(event.offsetX, event.offsetY, 100, 100);  //
-}
-*/
+        // El modo "destination-out" hace que lo que se dibuje se borre del canvas en lugar de dibujarse encima.
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.moveTo(this.posicionesCursor.iniciales.x, this.posicionesCursor.iniciales.y);
+        ctx.lineTo(this.posicionesCursor.finales.x, this.posicionesCursor.finales.y);
+        ctx.stroke();
+        // Regresa el modo a normal para no arruinar las siguientes figuras
+        ctx.globalCompositeOperation = "source-over";
+        ctx.closePath();
+    }
+}    

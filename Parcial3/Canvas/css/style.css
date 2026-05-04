@@ -69,3 +69,34 @@ input[type="range"],
 input[type="radio"] {
     accent-color: #38bdf8; /* El mismo azul celeste de tus botones */
 }
+
+/*Ajustes de Celular*/
+/* Esto asegura que el canvas nunca sea más ancho que la pantalla del celular */
+#lienzo {
+    max-width: 100%;
+    height: auto; /* Mantiene la proporción para que no se estire feo */
+    touch-action: none; /* Le dice al celular "No hagas scroll si deslizan el dedo adentro del canvas" */
+    box-sizing: border-box; /* Evita que los bordes lo hagan más grande */
+}
+
+@media (max-width: 768px) {
+    div { 
+        display: flex;
+        flex-wrap: wrap; /* Si ya no caben en una línea, los pasa abajo automáticamente */
+        justify-content: center;
+        gap: 5px; /* Espacio entre los botones */
+    }
+    /* Hacemos los botones un poquito más grandes para que sea fácil atinarles con el dedo */
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin: 2px;
+        flex-grow: 1; /* Hace que los botones se estiren para rellenar los huecos vacíos */
+    }
+    /* Acomodamos los selectores de color que acabas de modificar */
+    .grupo-controles {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
